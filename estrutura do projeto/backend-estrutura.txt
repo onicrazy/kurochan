@@ -1,0 +1,58 @@
+kurochan-backend/
+├── package.json                  # Configurações do projeto Node.js
+├── .env                          # Variáveis de ambiente (desenvolvimento)
+├── .env.example                  # Exemplo de variáveis de ambiente
+├── server.js                     # Arquivo de entrada da aplicação
+├── config/                       # Configurações
+│   ├── database.js               # Configuração da conexão com o banco de dados
+│   ├── environment.js            # Gerenciamento de variáveis de ambiente
+│   ├── auth.js                   # Configuração de autenticação JWT
+│   └── i18n.js                   # Configuração de internacionalização
+├── api/                          # API RESTful
+│   ├── controllers/              # Controladores da API
+│   │   ├── authController.js     # Controle de autenticação
+│   │   ├── userController.js     # Controle de usuários
+│   │   ├── funcionarioController.js  # Controle de funcionários
+│   │   ├── empresaController.js  # Controle de empresas
+│   │   ├── alocacaoController.js # Controle de alocações
+│   │   ├── pagamentoController.js # Controle de pagamentos
+│   │   └── relatorioController.js # Controle de relatórios
+│   ├── models/                   # Modelos de dados
+│   │   ├── userModel.js          # Modelo de usuários
+│   │   ├── funcionarioModel.js   # Modelo de funcionários
+│   │   ├── empresaModel.js       # Modelo de empresas
+│   │   ├── alocacaoModel.js      # Modelo de alocações
+│   │   └── pagamentoModel.js     # Modelo de pagamentos
+│   ├── routes/                   # Rotas da API
+│   │   ├── authRoutes.js         # Rotas de autenticação
+│   │   ├── userRoutes.js         # Rotas de usuários
+│   │   ├── funcionarioRoutes.js  # Rotas de funcionários
+│   │   ├── empresaRoutes.js      # Rotas de empresas
+│   │   ├── alocacaoRoutes.js     # Rotas de alocações
+│   │   ├── pagamentoRoutes.js    # Rotas de pagamentos
+│   │   └── relatorioRoutes.js    # Rotas de relatórios
+│   ├── middlewares/              # Middlewares
+│   │   ├── authMiddleware.js     # Middleware de autenticação
+│   │   ├── errorMiddleware.js    # Middleware de tratamento de erros
+│   │   └── logMiddleware.js      # Middleware de log
+│   └── validators/               # Validadores de entrada
+│       ├── userValidator.js      # Validador de usuários
+│       ├── funcionarioValidator.js # Validador de funcionários
+│       ├── empresaValidator.js   # Validador de empresas
+│       └── alocacaoValidator.js  # Validador de alocações
+├── services/                     # Serviços
+│   ├── emailService.js           # Serviço de envio de e-mail
+│   ├── pdfService.js             # Serviço de geração de PDF
+│   └── excelService.js           # Serviço de geração de Excel
+├── utils/                        # Utilitários
+│   ├── dateUtils.js              # Utilitários de data
+│   ├── moneyUtils.js             # Utilitários de formatação monetária
+│   └── stringUtils.js            # Utilitários de string
+├── locales/                      # Arquivos de idioma
+│   ├── pt-BR/                    # Português do Brasil
+│   │   └── translation.json      # Traduções em português
+│   └── ja/                       # Japonês
+│       └── translation.json      # Traduções em japonês
+└── tests/                        # Testes
+    ├── unit/                     # Testes unitários
+    └── integration/              # Testes de integração

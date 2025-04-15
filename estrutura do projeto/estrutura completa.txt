@@ -1,0 +1,194 @@
+kurochan-project/
+├── kurochan-backend/
+│   ├── api/
+│   │   ├── controllers/
+│   │   │   ├──* alocacaoController.js
+│   │   │   ├──* authController.js
+│   │   │   ├── empresaController.js
+│   │   │   ├──* funcionarioController.js
+│   │   │   ├── pagamentoController.js
+│   │   │   ├──* relatorioController.js
+│   │   │   ├── tipoServicoController.js
+│   │   │   └── userController.js
+│   │   ├── middlewares/
+│   │   │   ├──* authMiddleware.js
+│   │   │   ├──* errorMiddleware.js
+│   │   │   └── logMiddleware.js
+│   │   ├── models/
+│   │   │   ├──* alocacaoModel.js
+│   │   │   ├──* empresaModel.js
+│   │   │   ├──* funcionarioModel.js
+│   │   │   ├── pagamentoModel.js
+│   │   │   ├── tipoServicoModel.js
+│   │   │   └── userModel.js
+│   │   ├── routes/
+│   │   │   ├──* alocacaoRoutes.js
+│   │   │   ├── authRoutes.js
+│   │   │   ├── empresaRoutes.js
+│   │   │   ├── funcionarioRoutes.js
+│   │   │   ├── pagamentoRoutes.js
+│   │   │   ├──* relatorioRoutes.js
+│   │   │   └── userRoutes.js
+│   │   └── validators/
+│   │       ├── alocacaoValidator.js
+│   │       ├── empresaValidator.js
+│   │       ├── funcionarioValidator.js
+│   │       └── userValidator.js
+│   ├── config/
+│   │   ├── auth.js
+│   │   ├──* database.js
+│   │   ├── environment.js
+│   │   └── i18n.js
+│   ├── locales/
+│   │   ├──* ja/
+│   │   │   └── translation.json
+│   │   └── pt-BR/
+│   │       └──* translation.json
+│   ├── services/
+│   │   ├── emailService.js
+│   │   ├──* excelService.js
+│   │   └──* pdfService.js
+│   ├── temp/
+│   │   └── .gitkeep
+│   ├── tests/
+│   │   ├── integration/
+│   │   └── unit/
+│   ├── utils/
+│   │   ├── dateUtils.js
+│   │   ├── moneyUtils.js
+│   │   └── stringUtils.js
+│   ├── .env
+│   ├──* .env.example
+│   ├── .gitignore
+│   ├── package.json
+│   └── server.js
+│
+├── kurochan-frontend/
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   ├── src/
+│   │   ├── assets/
+│   │   │   ├── fonts/
+│   │   │   ├── images/
+│   │   │   │   ├── logo-dark.png
+│   │   │   │   └── logo-light.png
+│   │   │   └── styles/
+│   │   │       ├── global.css
+│   │   │       └── themes.js
+│   │   ├── components/
+│   │   │   ├── common/
+│   │   │   │   ├── AlertDialog.jsx
+│   │   │   │   ├── ConfirmDialog.jsx
+│   │   │   │   ├── CustomButton.jsx
+│   │   │   │   ├── DataTable.jsx
+│   │   │   │   ├── LoadingButton.jsx
+│   │   │   │   ├── PageHeader.jsx
+│   │   │   │   └── StatusChip.jsx
+│   │   │   ├── forms/
+│   │   │   │   ├── AlocacaoForm.jsx
+│   │   │   │   ├── EmpresaForm.jsx
+│   │   │   │   ├── FuncionarioForm.jsx
+│   │   │   │   ├── PagamentoForm.jsx
+│   │   │   │   └── UserForm.jsx
+│   │   │   └── layout/
+│   │   │       ├── Footer.jsx
+│   │   │       ├── Header.jsx
+│   │   │       ├── LanguageSwitcher.jsx
+│   │   │       ├── Layout.jsx
+│   │   │       ├── NotificationBell.jsx
+│   │   │       ├── Sidebar.jsx
+│   │   │       └── ThemeSwitcher.jsx
+│   │   ├── contexts/
+│   │   │   ├── AuthContext.jsx
+│   │   │   ├── NotificationContext.jsx
+│   │   │   └── ThemeContext.jsx
+│   │   ├── hooks/
+│   │   │   ├── useAuth.js
+│   │   │   ├── useDebounce.js
+│   │   │   ├── useFetch.js
+│   │   │   └── useLocalStorage.js
+│   │   ├── locales/
+│   │   │   ├── i18n.js
+│   │   │   ├── ja/
+│   │   │   │   └── translation.json
+│   │   │   └── pt-BR/
+│   │   │       └── translation.json
+│   │   ├── pages/
+│   │   │   ├── alocacoes/
+│   │   │   │   ├── AlocacaoDetails.jsx
+│   │   │   │   └── AlocacoesList.jsx
+│   │   │   ├── auth/
+│   │   │   │   ├── ForgotPassword.jsx
+│   │   │   │   ├── Login.jsx
+│   │   │   │   └── Register.jsx
+│   │   │   ├── calendario/
+│   │   │   │   ├── components/
+│   │   │   │   │   ├──* CalendarioAlocacoes.jsx
+│   │   │   │   │   └── DayCell.jsx
+│   │   │   │   └── index.jsx
+│   │   │   ├── dashboard/
+│   │   │   │   ├── components/
+│   │   │   │   │   ├── FinancialSummary.jsx
+│   │   │   │   │   ├── RecentAllocations.jsx
+│   │   │   │   │   └── RevenueChart.jsx
+│   │   │   │   └──* index.jsx
+│   │   │   ├── empresas/
+│   │   │   │   ├── EmpresaCreate.jsx
+│   │   │   │   ├── EmpresaDetails.jsx
+│   │   │   │   ├── EmpresaEdit.jsx
+│   │   │   │   └── EmpresasList.jsx
+│   │   │   ├── funcionarios/
+│   │   │   │   ├── FuncionarioCreate.jsx
+│   │   │   │   ├── FuncionarioDetails.jsx
+│   │   │   │   ├── FuncionarioEdit.jsx
+│   │   │   │   └── FuncionariosList.jsx
+│   │   │   ├── pagamentos/
+│   │   │   │   ├── EmpresaInvoice.jsx
+│   │   │   │   ├── FuncionarioPagamento.jsx
+│   │   │   │   ├── PagamentoCreate.jsx
+│   │   │   │   └── PagamentosList.jsx
+│   │   │   ├── relatorios/
+│   │   │   │   ├── FinanceiroReport.jsx
+│   │   │   │   └── GeralReport.jsx
+│   │   │   ├── settings/
+│   │   │   │   ├── ProfileSettings.jsx
+│   │   │   │   └── SystemSettings.jsx
+│   │   │   └── users/
+│   │   │       ├── UserCreate.jsx
+│   │   │       ├── UserEdit.jsx
+│   │   │       └── UsersList.jsx
+│   │   ├── services/
+│   │   │   ├── api.js
+│   │   │   ├── auth.js
+│   │   │   ├── alocacoes.js
+│   │   │   ├── empresas.js
+│   │   │   ├── funcionarios.js
+│   │   │   ├── pagamentos.js
+│   │   │   ├── relatorios.js
+│   │   │   └── users.js
+│   │   ├── utils/
+│   │   │   ├── dateFormatter.js
+│   │   │   ├── errorHandler.js
+│   │   │   ├── moneyFormatter.js
+│   │   │   ├── permissions.js
+│   │   │   ├── storage.js
+│   │   │   └── validators.js
+│   │   ├── App.jsx
+│   │   ├── AppRoutes.jsx
+│   │   ├── index.js
+│   │   └── reportWebVitals.js
+│   ├── .env
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── jsconfig.json
+│   ├── package.json
+│   └── README.md
+│
+├── README.md
+├── docker-compose.yml
+└── .gitignore

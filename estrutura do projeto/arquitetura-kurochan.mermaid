@@ -1,0 +1,43 @@
+graph TB
+    Cliente[Navegador Cliente]
+    Frontend[Frontend - React.js]
+    API[API REST - Node.js/Express]
+    DB[(PostgreSQL)]
+    PDF[Geração de PDF]
+    XLSX[Geração de XLSX]
+    Email[Envio de Email]
+    
+    Cliente --> Frontend
+    Frontend --> API
+    API --> DB
+    API --> PDF
+    API --> XLSX
+    API --> Email
+    
+    subgraph "Frontend - Módulos"
+        FE1[Login & Segurança]
+        FE2[Cadastro de Funcionários]
+        FE3[Cadastro de Empresas]
+        FE4[Alocação de Funcionários]
+        FE5[Controle de Pagamentos]
+        FE6[Relatórios]
+        FE7[Calendário Visual]
+    end
+    
+    subgraph "Backend - Módulos"
+        BE1[Auth & Segurança]
+        BE2[API Funcionários]
+        BE3[API Empresas]
+        BE4[API Alocações]
+        BE5[API Pagamentos]
+        BE6[API Relatórios]
+    end
+    
+    subgraph "Banco de Dados - Tabelas"
+        T1[usuarios]
+        T2[funcionarios]
+        T3[empresas]
+        T4[alocacoes]
+        T5[pagamentos]
+        T6[pagamentos_funcionarios]
+    end
