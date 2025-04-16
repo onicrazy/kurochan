@@ -86,7 +86,7 @@ kurochan-project/
 │   │   │   │   ├── AlertDialog.jsx
 │   │   │   │   ├── ConfirmDialog.jsx
 │   │   │   │   ├── CustomButton.jsx
-│   │   │   │   ├── DataTable.jsx
+│   │   │   │   ├──* DataTable.jsx
 │   │   │   │   ├── LoadingButton.jsx
 │   │   │   │   ├── PageHeader.jsx
 │   │   │   │   └── StatusChip.jsx
@@ -99,26 +99,26 @@ kurochan-project/
 │   │   │   └── layout/
 │   │   │       ├──* Footer.jsx
 │   │   │       ├──* Header.jsx
-│   │   │       ├── LanguageSwitcher.jsx
+│   │   │       ├──* LanguageSwitcher.jsx
 │   │   │       ├── Layout.jsx
-│   │   │       ├── NotificationBell.jsx
+│   │   │       ├──* NotificationBell.jsx
 │   │   │       ├──* Sidebar.jsx
-│   │   │       └── ThemeSwitcher.jsx
-│   │   ├── contexts/
+│   │   │       └──* ThemeSwitcher.jsx
+│   │   ├──* contexts/
 │   │   │   ├──* AuthContext.jsx
-│   │   │   ├── NotificationContext.jsx
+│   │   │   ├──* NotificationContext.jsx
 │   │   │   └──* ThemeContext.jsx
-│   │   ├── hooks/
-│   │   │   ├── useAuth.js
-│   │   │   ├── useDebounce.js
-│   │   │   ├── useFetch.js
-│   │   │   └── useLocalStorage.js
+│   │   ├──* hooks/
+│   │   │   ├──* useAuth.js
+│   │   │   ├──* useDebounce.js
+│   │   │   ├──* useFetch.js
+│   │   │   └──* useLocalStorage.js
 │   │   ├── locales/
 │   │   │   ├──* i18n.js
-│   │   │   ├── ja/
-│   │   │   │   └── translation.json
-│   │   │   └── pt-BR/
-│   │   │       └── translation.json
+│   │   │   ├──* ja/
+│   │   │   │   └──* translation.json
+│   │   │   └──* pt-BR/
+│   │   │       └──* translation.json
 │   │   ├── pages/
 │   │   │   ├──* alocacoes/
 │   │   │   │   ├──* AlocacaoDetails.jsx
@@ -164,15 +164,15 @@ kurochan-project/
 │   │   │       ├── UserCreate.jsx
 │   │   │       ├── UserEdit.jsx
 │   │   │       └── UsersList.jsx
-│   │   ├── services/
+│   │   ├──* services/
 │   │   │   ├──* api.js
 │   │   │   ├──* auth.js
-│   │   │   ├── alocacoes.js
-│   │   │   ├── empresas.js
-│   │   │   ├── funcionarios.js
-│   │   │   ├── pagamentos.js
-│   │   │   ├── relatorios.js
-│   │   │   └── users.js
+│   │   │   ├──* alocacoes.js
+│   │   │   ├──* empresas.js
+│   │   │   ├──* funcionarios.js
+│   │   │   ├──* pagamentos.js
+│   │   │   ├──* relatorios.js
+│   │   │   └──* users.js
 │   │   ├── utils/
 │   │   │   ├── dateFormatter.js
 │   │   │   ├── errorHandler.js
