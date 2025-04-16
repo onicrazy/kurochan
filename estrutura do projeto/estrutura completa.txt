@@ -97,7 +97,7 @@ kurochan-project/
 │   │   │   │   ├── PagamentoForm.jsx
 │   │   │   │   └── UserForm.jsx
 │   │   │   └── layout/
-│   │   │       ├── Footer.jsx
+│   │   │       ├──* Footer.jsx
 │   │   │       ├──* Header.jsx
 │   │   │       ├── LanguageSwitcher.jsx
 │   │   │       ├── Layout.jsx
@@ -137,6 +137,7 @@ kurochan-project/
 │   │   │   │   │   ├── FinancialSummary.jsx
 │   │   │   │   │   ├── RecentAllocations.jsx
 │   │   │   │   │   └── RevenueChart.jsx
+│   │   │   │   │   └──* StatusCard.jsx
 │   │   │   │   └──* index.jsx
 │   │   │   ├── empresas/
 │   │   │   │   ├── EmpresaCreate.jsx
@@ -144,7 +145,7 @@ kurochan-project/
 │   │   │   │   ├── EmpresaEdit.jsx
 │   │   │   │   └──* EmpresasList.jsx
 │   │   │   ├── funcionarios/
-│   │   │   │   ├── FuncionarioCreate.jsx
+│   │   │   │   ├──* FuncionarioCreate.jsx
 │   │   │   │   ├── FuncionarioDetails.jsx
 │   │   │   │   ├── FuncionarioEdit.jsx
 │   │   │   │   └── FuncionariosList.jsx
