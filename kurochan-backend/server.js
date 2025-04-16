@@ -50,6 +50,7 @@ const empresaRoutes = require('./api/routes/empresaRoutes');
 const alocacaoRoutes = require('./api/routes/alocacaoRoutes');
 const pagamentoRoutes = require('./api/routes/pagamentoRoutes');
 const relatorioRoutes = require('./api/routes/relatorioRoutes');
+const tipoServicoRoutes = require('./api/routes/tipoServicoRoutes');
 
 // Definição das rotas da API
 app.use('/api/auth', authRoutes);
@@ -59,6 +60,7 @@ app.use('/api/empresas', empresaRoutes);
 app.use('/api/alocacoes', alocacaoRoutes);
 app.use('/api/pagamentos', pagamentoRoutes);
 app.use('/api/relatorios', relatorioRoutes);
+app.use('/api/tipos-servico', tipoServicoRoutes);
 
 // Rota de status
 app.get('/api/status', (req, res) => {

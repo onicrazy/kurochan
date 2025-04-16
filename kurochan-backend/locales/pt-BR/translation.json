@@ -484,4 +484,30 @@
       "online": "API online e funcionando corretamente"
     }
   }
+
+"servicetype": {
+    "title": "Tipos de Serviço",
+    "newServiceType": "Novo Tipo de Serviço",
+    "editServiceType": "Editar Tipo de Serviço",
+    "name": "Nome",
+    "japaneseName": "Nome em Japonês",
+    "description": "Descrição",
+    "active": "Ativo",
+    "error": {
+      "notFound": "Tipo de serviço não encontrado",
+      "alreadyInactive": "Tipo de serviço já está inativo",
+      "beingUsed": "Tipo de serviço está sendo utilizado e não pode ser excluído"
+    },
+    "success": {
+      "created": "Tipo de serviço criado com sucesso",
+      "updated": "Tipo de serviço atualizado com sucesso",
+      "deleted": "Tipo de serviço removido com sucesso"
+    }
+  },
+  
+  "api": {
+    "status": {
+      "online": "API online e funcionando corretamente"
+    }
+  }
 }

@@ -1,34 +1,35 @@
 kurochan-project/
 ├── kurochan-backend/
 │   ├── api/
-│   │   ├── controllers/
+│   │   ├──* controllers/
 │   │   │   ├──* alocacaoController.js
 │   │   │   ├──* authController.js
-│   │   │   ├── empresaController.js
+│   │   │   ├──* empresaController.js
 │   │   │   ├──* funcionarioController.js
-│   │   │   ├── pagamentoController.js
+│   │   │   ├──* pagamentoController.js
 │   │   │   ├──* relatorioController.js
-│   │   │   ├── tipoServicoController.js
-│   │   │   └── userController.js
+│   │   │   ├──* tipoServicoController.js
+│   │   │   └──* userController.js
 │   │   ├── middlewares/
 │   │   │   ├──* authMiddleware.js
 │   │   │   ├──* errorMiddleware.js
 │   │   │   └── logMiddleware.js
-│   │   ├── models/
+│   │   ├──* models/
 │   │   │   ├──* alocacaoModel.js
 │   │   │   ├──* empresaModel.js
 │   │   │   ├──* funcionarioModel.js
-│   │   │   ├── pagamentoModel.js
-│   │   │   ├── tipoServicoModel.js
-│   │   │   └── userModel.js
-│   │   ├── routes/
+│   │   │   ├──* pagamentoModel.js
+│   │   │   ├──* tipoServicoModel.js
+│   │   │   └──* userModel.js
+│   │   ├──* routes/
 │   │   │   ├──* alocacaoRoutes.js
-│   │   │   ├── authRoutes.js
-│   │   │   ├── empresaRoutes.js
-│   │   │   ├── funcionarioRoutes.js
-│   │   │   ├── pagamentoRoutes.js
+│   │   │   ├──* authRoutes.js
+│   │   │   ├──* empresaRoutes.js
+│   │   │   ├──* funcionarioRoutes.js
+│   │   │   ├──* pagamentoRoutes.js
 │   │   │   ├──* relatorioRoutes.js
-│   │   │   └── userRoutes.js
+│   │   │   └──* userRoutes.js
+│   │   │   └──* tiposervicoroutes.js
 │   │   └── validators/
 │   │       ├── alocacaoValidator.js
 │   │       ├── empresaValidator.js

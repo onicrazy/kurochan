@@ -41,7 +41,17 @@
     "minLength": "少なくとも{{count}}文字必要です",
     "maxLength": "最大{{count}}文字まで入力できます",
     "invalidFormat": "無効な形式です",
-    "mustBePositive": "値はゼロより大きくなければなりません"
+    "mustBePositive": "値はゼロより大きくなければなりません",
+    "number": "数値を入力してください",
+    "integer": "整数を入力してください",
+    "positive": "正の値を入力してください",
+    "string": "文字列を入力してください",
+    "boolean": "真偽値を入力してください",
+    "date": "有効な日付を入力してください",
+    "dateFormat": "日付形式は YYYY-MM-DD である必要があります",
+    "min": "値は {{count}} 以上である必要があります",
+    "max": "値は {{count}} 以下である必要があります",
+    "validValues": "有効な値: {{values}}"
   },
   
   "auth": {
@@ -88,163 +98,7 @@
     "calendar": "カレンダー",
     "employees": "従業員",
     "companies": "会社",
-    "allocationsPerDay": "日別割り当て",
-    "error": {
-      "invalidDates": "無効な日付",
-      "endDateBeforeStartDate": "終了日は開始日より後でなければなりません",
-      "failedToGenerateReport": "レポートの生成に失敗しました",
-      "exportFailed": "エクスポートに失敗しました"
-    },
-    "success": {
-      "reportGenerated": "レポートが正常に生成されました",
-      "exportComplete": "エクスポートが正常に完了しました"
-    }
-  },
-  
-  "settings": {
-    "title": "設定",
-    "profile": "プロフィール",
-    "language": "言語",
-    "theme": "テーマ",
-    "notifications": "通知",
-    "security": "セキュリティ",
-    "changePassword": "パスワードを変更",
-    "portuguese": "ポルトガル語",
-    "japanese": "日本語",
-    "light": "ライト",
-    "dark": "ダーク",
-    "system": "システム",
-    "enableEmailNotifications": "メール通知を有効にする",
-    "enableSystemNotifications": "システム通知を有効にする",
-    "emailFrequency": "メール頻度",
-    "daily": "毎日",
-    "weekly": "毎週",
-    "monthly": "毎月",
-    "saveChanges": "変更を保存",
-    "error": {
-      "updateFailed": "設定の更新に失敗しました",
-      "invalidSettings": "無効な設定"
-    },
-    "success": {
-      "settingsUpdated": "設定が正常に更新されました",
-      "passwordChanged": "パスワードが正常に変更されました"
-    }
-  },
-  
-  "users": {
-    "title": "ユーザー",
-    "newUser": "新しいユーザー",
-    "editUser": "ユーザーを編集",
-    "name": "名前",
-    "email": "メールアドレス",
-    "role": "役割",
-    "active": "有効",
-    "lastLogin": "最終ログイン",
-    "createdAt": "作成日",
-    "updatedAt": "更新日",
-    "preferredLanguage": "好みの言語",
-    "administrator": "管理者",
-    "manager": "マネージャー",
-    "operator": "オペレーター",
-    "resetPassword": "パスワードをリセット",
-    "error": {
-      "notFound": "ユーザーが見つかりません",
-      "emailAlreadyExists": "メールアドレスはすでに使用されています",
-      "invalidRole": "無効な役割",
-      "cannotEditSelf": "ここで自分のユーザーを編集することはできません",
-      "cannotDeactivateSelf": "自分のユーザーを無効にすることはできません"
-    },
-    "success": {
-      "created": "ユーザーが正常に作成されました",
-      "updated": "ユーザーが正常に更新されました",
-      "deleted": "ユーザーが正常に削除されました",
-      "passwordReset": "パスワードが正常にリセットされました"
-    }
-  },
-  
-  "pdf": {
-    "receipt": {
-      "title": "支払い領収書",
-      "subtitle": "従業員への支払い証明書",
-      "employeeInfo": "従業員情報",
-      "name": "名前",
-      "position": "役職",
-      "document": "書類",
-      "paymentInfo": "支払い情報",
-      "paymentDate": "支払日",
-      "periodStart": "期間開始",
-      "periodEnd": "期間終了",
-      "paymentMethod": "支払い方法",
-      "referenceNumber": "参照番号",
-      "allocations": "割り当て",
-      "date": "日付",
-      "company": "会社",
-      "periodType": "期間タイプ",
-      "fullPeriod": "一日",
-      "halfPeriod": "半日",
-      "amount": "金額",
-      "total": "合計",
-      "observations": "備考",
-      "employeeSignature": "従業員署名",
-      "companySignature": "会社署名",
-      "subject": "支払い領収書"
-    },
-    "invoice": {
-      "title": "請求書",
-      "subtitle": "会社への請求書",
-      "invoiceNumber": "請求書番号",
-      "companyInfo": "会社情報",
-      "name": "名前",
-      "address": "住所",
-      "contact": "連絡先",
-      "phone": "電話番号",
-      "email": "メールアドレス",
-      "invoiceInfo": "請求書情報",
-      "invoiceDate": "請求日",
-      "dueDate": "支払期限",
-      "periodStart": "期間開始",
-      "periodEnd": "期間終了",
-      "services": "サービス",
-      "date": "日付",
-      "employee": "従業員",
-      "service": "サービス",
-      "location": "場所",
-      "amount": "金額",
-      "subtotal": "小計",
-      "total": "合計",
-      "observations": "備考",
-      "paymentInstructions": "支払い指示",
-      "paymentMessage": "上記の支払い方法で期日までにお支払いください。",
-      "subject": "請求書"
-    }
-  },
-  
-  "error": {
-    "validation": "検証エラー",
-    "uniqueViolation": "一意性制約違反",
-    "duplicateEntry": "重複エントリ",
-    "foreignKeyViolation": "外部キー制約違反",
-    "referencedRecordNotFound": "参照レコードが見つかりません",
-    "databaseError": "データベースエラー",
-    "invalidDataStructure": "無効なデータ構造",
-    "applicationError": "アプリケーションエラー",
-    "internalServerError": "内部サーバーエラー",
-    "somethingWentWrong": "問題が発生しました。後でもう一度お試しください。",
-    "pageNotFound": "ページが見つかりません",
-    "pageNotFoundMessage": "お探しのページは存在しないか、移動されました。",
-    "goBackHome": "ホームページに戻る",
-    "unauthorized": "権限がありません",
-    "unauthorizedMessage": "このページにアクセスする権限がありません。",
-    "sessionExpired": "セッションの有効期限が切れました",
-    "sessionExpiredMessage": "セッションの有効期限が切れました。もう一度ログインしてください。"
-  },
-  
-  "api": {
-    "status": {
-      "online": "APIはオンラインで正常に動作しています"
-    }
-  }
-}": "割り当て",
+    "allocations": "割り当て",
     "payments": "支払い",
     "reports": "レポート",
     "settings": "設定",
@@ -447,11 +301,15 @@
       "notFound": "支払いが見つかりません",
       "invalidDates": "無効な日付",
       "endDateBeforeStartDate": "終了日は開始日より後でなければなりません",
+      "dueDateBeforeInvoiceDate": "支払期限は請求日より後でなければなりません",
       "noAllocationsSelected": "割り当てが選択されていません",
       "amountMismatch": "金額が割り当ての合計と一致しません",
       "allocationsAlreadyPaid": "一部の割り当てはすでに支払われています",
+      "allocationNotBelongToEmployee": "割り当ては従業員に属していません",
+      "allocationNotBelongToCompany": "割り当ては会社に属していません",
       "failedToGenerateReceipt": "領収書の生成に失敗しました",
-      "failedToGenerateInvoice": "請求書の生成に失敗しました"
+      "failedToGenerateInvoice": "請求書の生成に失敗しました",
+      "invalidStatus": "無効なステータス"
     },
     "success": {
       "employeePaymentCreated": "従業員への支払いが正常に作成されました",
@@ -468,6 +326,7 @@
     "employeeReport": "従業員レポート",
     "companyReport": "会社レポート",
     "allocationReport": "割り当てレポート",
+    "employeeProductivityReport": "従業員生産性レポート",
     "startDate": "開始日",
     "endDate": "終了日",
     "employee": "従業員",
@@ -484,4 +343,199 @@
     "totalCompanies": "会社合計",
     "topEmployees": "最も割り当てられた従業員",
     "topCompanies": "最も利用された会社",
-    "allocations
+    "allocationsPerDay": "日別割り当て",
+    "period": "期間",
+    "revenues": "収益",
+    "expenses": "支出",
+    "summary": "概要",
+    "appliedFilters": "適用されたフィルター",
+    "error": {
+      "invalidDates": "無効な日付",
+      "endDateBeforeStartDate": "終了日は開始日より後でなければなりません",
+      "failedToGenerateReport": "レポートの生成に失敗しました",
+      "exportFailed": "エクスポートに失敗しました",
+      "formatNotImplemented": "このフォーマットはまだ実装されていません"
+    },
+    "success": {
+      "reportGenerated": "レポートが正常に生成されました",
+      "exportComplete": "エクスポートが正常に完了しました"
+    }
+  },
+  
+  "settings": {
+    "title": "設定",
+    "profile": "プロフィール",
+    "language": "言語",
+    "theme": "テーマ",
+    "notifications": "通知",
+    "security": "セキュリティ",
+    "changePassword": "パスワードを変更",
+    "portuguese": "ポルトガル語",
+    "japanese": "日本語",
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "システム",
+    "enableEmailNotifications": "メール通知を有効にする",
+    "enableSystemNotifications": "システム通知を有効にする",
+    "emailFrequency": "メール頻度",
+    "daily": "毎日",
+    "weekly": "毎週",
+    "monthly": "毎月",
+    "saveChanges": "変更を保存",
+    "error": {
+      "updateFailed": "設定の更新に失敗しました",
+      "invalidSettings": "無効な設定"
+    },
+    "success": {
+      "settingsUpdated": "設定が正常に更新されました",
+      "passwordChanged": "パスワードが正常に変更されました"
+    }
+  },
+  
+  "users": {
+    "title": "ユーザー",
+    "newUser": "新しいユーザー",
+    "editUser": "ユーザーを編集",
+    "name": "名前",
+    "email": "メールアドレス",
+    "role": "役割",
+    "active": "有効",
+    "lastLogin": "最終ログイン",
+    "createdAt": "作成日",
+    "updatedAt": "更新日",
+    "preferredLanguage": "好みの言語",
+    "administrator": "管理者",
+    "manager": "マネージャー",
+    "operator": "オペレーター",
+    "resetPassword": "パスワードをリセット",
+    "error": {
+      "notFound": "ユーザーが見つかりません",
+      "emailAlreadyExists": "メールアドレスはすでに使用されています",
+      "invalidRole": "無効な役割",
+      "cannotEditSelf": "ここで自分のユーザーを編集することはできません",
+      "cannotDeactivateSelf": "自分のユーザーを無効にすることはできません"
+    },
+    "success": {
+      "created": "ユーザーが正常に作成されました",
+      "updated": "ユーザーが正常に更新されました",
+      "deleted": "ユーザーが正常に削除されました",
+      "passwordReset": "パスワードが正常にリセットされました"
+    }
+  },
+  
+  "pdf": {
+    "receipt": {
+      "title": "支払い領収書",
+      "subtitle": "従業員への支払い証明書",
+      "employeeInfo": "従業員情報",
+      "name": "名前",
+      "position": "役職",
+      "document": "書類",
+      "paymentInfo": "支払い情報",
+      "paymentDate": "支払日",
+      "periodStart": "期間開始",
+      "periodEnd": "期間終了",
+      "paymentMethod": "支払い方法",
+      "referenceNumber": "参照番号",
+      "allocations": "割り当て",
+      "date": "日付",
+      "company": "会社",
+      "periodType": "期間タイプ",
+      "fullPeriod": "一日",
+      "halfPeriod": "半日",
+      "amount": "金額",
+      "total": "合計",
+      "observations": "備考",
+      "employeeSignature": "従業員署名",
+      "companySignature": "会社署名",
+      "subject": "支払い領収書"
+    },
+    "invoice": {
+      "title": "請求書",
+      "subtitle": "会社への請求書",
+      "invoiceNumber": "請求書番号",
+      "companyInfo": "会社情報",
+      "name": "名前",
+      "address": "住所",
+      "contact": "連絡先",
+      "phone": "電話番号",
+      "email": "メールアドレス",
+      "invoiceInfo": "請求書情報",
+      "invoiceDate": "請求日",
+      "dueDate": "支払期限",
+      "periodStart": "期間開始",
+      "periodEnd": "期間終了",
+      "services": "サービス",
+      "date": "日付",
+      "employee": "従業員",
+      "service": "サービス",
+      "location": "場所",
+      "amount": "金額",
+      "subtotal": "小計",
+      "total": "合計",
+      "observations": "備考",
+      "paymentInstructions": "支払い指示",
+      "paymentMessage": "上記の支払い方法で期日までにお支払いください。",
+      "subject": "請求書"
+    }
+  },
+  
+  "error": {
+    "validation": "検証エラー",
+    "uniqueViolation": "一意性制約違反",
+    "duplicateEntry": "重複エントリ",
+    "foreignKeyViolation": "外部キー制約違反",
+    "referencedRecordNotFound": "参照レコードが見つかりません",
+    "databaseError": "データベースエラー",
+    "invalidDataStructure": "無効なデータ構造",
+    "applicationError": "アプリケーションエラー",
+    "internalServerError": "内部サーバーエラー",
+    "somethingWentWrong": "問題が発生しました。後でもう一度お試しください。",
+    "pageNotFound": "ページが見つかりません",
+    "pageNotFoundMessage": "お探しのページは存在しないか、移動されました。",
+    "goBackHome": "ホームページに戻る",
+    "unauthorized": "権限がありません",
+    "unauthorizedMessage": "このページにアクセスする権限がありません。",
+    "sessionExpired": "セッションの有効期限が切れました",
+    "sessionExpiredMessage": "セッションの有効期限が切れました。もう一度ログインしてください。"
+  },
+  
+  "servicetype": {
+    "title": "サービスタイプ",
+    "newServiceType": "新しいサービスタイプ",
+    "editServiceType": "サービスタイプを編集",
+    "name": "名前",
+    "japaneseName": "日本語名",
+    "description": "説明",
+    "active": "有効",
+    "error": {
+      "notFound": "サービスタイプが見つかりません",
+      "alreadyInactive": "サービスタイプはすでに無効です",
+      "beingUsed": "サービスタイプは使用中のため削除できません"
+    },
+    "success": {
+      "created": "サービスタイプが正常に作成されました",
+      "updated": "サービスタイプが正常に更新されました",
+      "deleted": "サービスタイプが正常に削除されました"
+    }
+  },
+  
+  "email": {
+    "pagamento-funcionario": {
+      "subject": "給与支払い通知",
+      "greeting": "こんにちは、{{name}}さん",
+      "body": "あなたの給与が処理されました。詳細は以下の通りです："
+    },
+    "fatura-empresa": {
+      "subject": "新しい請求書の通知",
+      "greeting": "こんにちは、{{nome}}様",
+      "body": "新しい請求書が作成されました。詳細は以下の通りです："
+    }
+  },
+  
+  "api": {
+    "status": {
+      "online": "APIはオンラインで正常に動作しています"
+    }
+  }
+}
