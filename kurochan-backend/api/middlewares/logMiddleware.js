@@ -112,3 +112,33 @@ module.exports = {
   logRequestMiddleware,
   logger
 };
+
+const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path');
+
+// Cria diretório de logs se não existir
+const logDirectory = path.join(__dirname, '../../logs');
+if (!fs.existsSync(logDirectory)) {
+  fs.mkdirSync(logDirectory);
+}
+
+// Criar stream de escrita para o arquivo de log
+const accessLogStream = fs.createWriteStream(
+  path.join(logDirectory, 'access.log'),
+  { flags: 'a' }
+);
+
+// Formato de log personalizado
+const logFormat = ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms';
+
+// Middleware de log para desenvolvimento
+const devLogMiddleware = morgan('dev');
+
+// Middleware de log para produção
+const prodLogMiddleware = morgan(logFormat, { stream: accessLogStream });
+
+// Exportar middleware de acordo com o ambiente
+module.exports = process.env.NODE_ENV === 'production' 
+  ? prodLogMiddleware 
+  : devLogMiddleware;

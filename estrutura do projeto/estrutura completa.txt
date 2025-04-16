@@ -1,6 +1,6 @@
 kurochan-project/
 ├── kurochan-backend/
-│   ├── api/
+│   ├──* api/
 │   │   ├──* controllers/
 │   │   │   ├──* alocacaoController.js
 │   │   │   ├──* authController.js
@@ -10,10 +10,10 @@ kurochan-project/
 │   │   │   ├──* relatorioController.js
 │   │   │   ├──* tipoServicoController.js
 │   │   │   └──* userController.js
-│   │   ├── middlewares/
+│   │   ├──* middlewares/
 │   │   │   ├──* authMiddleware.js
 │   │   │   ├──* errorMiddleware.js
-│   │   │   └── logMiddleware.js
+│   │   │   └──* logMiddleware.js
 │   │   ├──* models/
 │   │   │   ├──* alocacaoModel.js
 │   │   │   ├──* empresaModel.js
@@ -30,23 +30,23 @@ kurochan-project/
 │   │   │   ├──* relatorioRoutes.js
 │   │   │   └──* userRoutes.js
 │   │   │   └──* tiposervicoroutes.js
-│   │   └── validators/
-│   │       ├── alocacaoValidator.js
-│   │       ├── empresaValidator.js
-│   │       ├── funcionarioValidator.js
-│   │       └── userValidator.js
-│   ├── config/
-│   │   ├── auth.js
+│   │   └──* validators/
+│   │       ├──* alocacaoValidator.js
+│   │       ├──* empresaValidator.js
+│   │       ├──* funcionarioValidator.js
+│   │       └──* userValidator.js
+│   ├──* config/
+│   │   ├──* auth.js
 │   │   ├──* database.js
-│   │   ├── environment.js
-│   │   └── i18n.js
-│   ├── locales/
+│   │   ├──* environment.js
+│   │   └──* i18n.js
+│   ├──* locales/
 │   │   ├──* ja/
-│   │   │   └── translation.json
-│   │   └── pt-BR/
+│   │   │   └──* translation.json
+│   │   └──* pt-BR/
 │   │       └──* translation.json
-│   ├── services/
-│   │   ├── emailService.js
+│   ├──* services/
+│   │   ├──* emailService.js
 │   │   ├──* excelService.js
 │   │   └──* pdfService.js
 │   ├── temp/
@@ -54,15 +54,15 @@ kurochan-project/
 │   ├── tests/
 │   │   ├── integration/
 │   │   └── unit/
-│   ├── utils/
-│   │   ├── dateUtils.js
-│   │   ├── moneyUtils.js
-│   │   └── stringUtils.js
+│   ├──* utils/
+│   │   ├──* dateUtils.js
+│   │   ├──* moneyUtils.js
+│   │   └──* stringUtils.js
 │   ├── .env
 │   ├──* .env.example
-│   ├── .gitignore
-│   ├── package.json
-│   └── server.js
+│   ├──* .gitignore
+│   ├──* package.json
+│   └──* server.js
 │
 ├── kurochan-frontend/
 │   ├── public/
@@ -131,7 +131,7 @@ kurochan-project/
 │   │   │   │   ├── components/
 │   │   │   │   │   ├──* CalendarioAlocacoes.jsx
 │   │   │   │   │   └── DayCell.jsx
-│   │   │   │   └── index.jsx
+│   │   │   │   └──* index.jsx
 │   │   │   ├── dashboard/
 │   │   │   │   ├── components/
 │   │   │   │   │   ├── FinancialSummary.jsx
