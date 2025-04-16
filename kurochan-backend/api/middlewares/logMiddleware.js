@@ -1,3 +1,4 @@
+// api/middlewares/logMiddleware.js
 const winston = require('winston');
 const fs = require('fs');
 const path = require('path');
@@ -56,9 +57,7 @@ const logRequestMiddleware = (req, res, next) => {
     method: req.method,
     url: req.originalUrl || req.url,
     ip: req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-    userId: req.userId || 'unauthenticated',
-    userAgent: req.get('User-Agent'),
-    body: process.env.LOG_REQUEST_BODY === 'true' ? sanitizeBody(req.body) : undefined
+    userAgent: req.get('User-Agent')
   };
   
   logger.info(`Request started: ${req.method} ${req.originalUrl}`, requestInfo);
@@ -85,60 +84,8 @@ const logRequestMiddleware = (req, res, next) => {
   next();
 };
 
-/**
- * Remove dados sensíveis do corpo da requisição antes de registrar logs
- * @param {Object} body - Corpo da requisição
- * @returns {Object} Corpo da requisição sem dados sensíveis
- */
-function sanitizeBody(body) {
-  if (!body) return body;
-  
-  const sanitized = { ...body };
-  
-  // Lista de campos sensíveis a serem omitidos
-  const sensitiveFields = ['senha', 'password', 'senhaAtual', 'novaSenha', 'token', 'apiKey'];
-  
-  sensitiveFields.forEach(field => {
-    if (sanitized[field]) {
-      sanitized[field] = '[REDACTED]';
-    }
-  });
-  
-  return sanitized;
-}
-
 // Exporta o middleware de log e o logger para uso em outros módulos
 module.exports = {
   logRequestMiddleware,
   logger
 };
-
-const morgan = require('morgan');
-const fs = require('fs');
-const path = require('path');
-
-// Cria diretório de logs se não existir
-const logDirectory = path.join(__dirname, '../../logs');
-if (!fs.existsSync(logDirectory)) {
-  fs.mkdirSync(logDirectory);
-}
-
-// Criar stream de escrita para o arquivo de log
-const accessLogStream = fs.createWriteStream(
-  path.join(logDirectory, 'access.log'),
-  { flags: 'a' }
-);
-
-// Formato de log personalizado
-const logFormat = ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms';
-
-// Middleware de log para desenvolvimento
-const devLogMiddleware = morgan('dev');
-
-// Middleware de log para produção
-const prodLogMiddleware = morgan(logFormat, { stream: accessLogStream });
-
-// Exportar middleware de acordo com o ambiente
-module.exports = process.env.NODE_ENV === 'production' 
-  ? prodLogMiddleware 
-  : devLogMiddleware;

@@ -114,7 +114,7 @@ kurochan-project/
 │   │   │   ├── useFetch.js
 │   │   │   └── useLocalStorage.js
 │   │   ├── locales/
-│   │   │   ├── i18n.js
+│   │   │   ├──* i18n.js
 │   │   │   ├── ja/
 │   │   │   │   └── translation.json
 │   │   │   └── pt-BR/
@@ -128,9 +128,9 @@ kurochan-project/
 │   │   │   │   ├──* Login.jsx
 │   │   │   │   └── Register.jsx
 │   │   │   ├── calendario/
-│   │   │   │   ├── components/
+│   │   │   │   ├──* components/
 │   │   │   │   │   ├──* CalendarioAlocacoes.jsx
-│   │   │   │   │   └── DayCell.jsx
+│   │   │   │   │   └──* DayCell.jsx
 │   │   │   │   └──* index.jsx
 │   │   │   ├── dashboard/
 │   │   │   │   ├── components/
@@ -157,7 +157,7 @@ kurochan-project/
 │   │   │   │   ├── FinanceiroReport.jsx
 │   │   │   │   └── GeralReport.jsx
 │   │   │   ├── settings/
-│   │   │   │   ├── ProfileSettings.jsx
+│   │   │   │   ├──* ProfileSettings.jsx
 │   │   │   │   └── SystemSettings.jsx
 │   │   │   └── users/
 │   │   │       ├── UserCreate.jsx
@@ -181,7 +181,7 @@ kurochan-project/
 │   │   │   └── validators.js
 │   │   ├──* App.jsx
 │   │   ├── AppRoutes.jsx
-│   │   ├── index.js
+│   │   ├──* index.js
 │   │   └── reportWebVitals.js
 │   ├── .env
 │   ├── .env.example
