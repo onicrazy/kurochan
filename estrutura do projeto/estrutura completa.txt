@@ -120,9 +120,9 @@ kurochan-project/
 │   │   │   └── pt-BR/
 │   │   │       └── translation.json
 │   │   ├── pages/
-│   │   │   ├── alocacoes/
-│   │   │   │   ├── AlocacaoDetails.jsx
-│   │   │   │   └── AlocacoesList.jsx
+│   │   │   ├──* alocacoes/
+│   │   │   │   ├──* AlocacaoDetails.jsx
+│   │   │   │   └──* AlocacoesList.jsx
 │   │   │   ├── auth/
 │   │   │   │   ├── ForgotPassword.jsx
 │   │   │   │   ├──* Login.jsx
@@ -139,21 +139,21 @@ kurochan-project/
 │   │   │   │   │   └── RevenueChart.jsx
 │   │   │   │   │   └──* StatusCard.jsx
 │   │   │   │   └──* index.jsx
-│   │   │   ├── empresas/
-│   │   │   │   ├── EmpresaCreate.jsx
-│   │   │   │   ├── EmpresaDetails.jsx
-│   │   │   │   ├── EmpresaEdit.jsx
+│   │   │   ├──* empresas/
+│   │   │   │   ├──* EmpresaCreate.jsx
+│   │   │   │   ├──* EmpresaDetails.jsx
+│   │   │   │   ├──* EmpresaEdit.jsx
 │   │   │   │   └──* EmpresasList.jsx
 │   │   │   ├── funcionarios/
 │   │   │   │   ├──* FuncionarioCreate.jsx
-│   │   │   │   ├── FuncionarioDetails.jsx
+│   │   │   │   ├──* FuncionarioDetails.jsx
 │   │   │   │   ├── FuncionarioEdit.jsx
 │   │   │   │   └── FuncionariosList.jsx
 │   │   │   ├── pagamentos/
 │   │   │   │   ├── EmpresaInvoice.jsx
 │   │   │   │   ├── FuncionarioPagamento.jsx
 │   │   │   │   ├── PagamentoCreate.jsx
-│   │   │   │   └── PagamentosList.jsx
+│   │   │   │   └──* PagamentosList.jsx
 │   │   │   ├── relatorios/
 │   │   │   │   ├── FinanceiroReport.jsx
 │   │   │   │   └── GeralReport.jsx

@@ -10,10 +10,6 @@ import {
   InputAdornment,
   CircularProgress,
   Alert,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
   FormControlLabel,
   Switch
 } from '@mui/material';
@@ -27,9 +23,9 @@ import api from '../../services/api';
 import { useSnackbar } from 'notistack';
 
 /**
- * Componente para editar um funcionário existente
+ * Componente para editar uma empresa existente
  */
-const FuncionarioEdit = () => {
+const EmpresaEdit = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -40,13 +36,11 @@ const FuncionarioEdit = () => {
     nome: '',
     nome_japones: '',
     endereco: '',
-    telefone: '',
-    cargo: '',
-    valor_diaria: '',
-    valor_meio_periodo: '',
-    data_admissao: '',
-    documento: '',
-    ativo: true,
+    contato_nome: '',
+    contato_telefone: '',
+    contato_email: '',
+    valor_padrao_servico: '',
+    ativa: true,
     observacoes: ''
   });
   
@@ -55,40 +49,25 @@ const FuncionarioEdit = () => {
   const [loadingData, setLoadingData] = useState(true);
   const [error, setError] = useState(null);
   
-  // Lista de cargos disponíveis
-  const cargos = [
-    { value: 'motorista', label: t('employees.driver') },
-    { value: 'auxiliar', label: t('employees.assistant') },
-    { value: 'operador', label: t('common.operator') },
-    { value: 'supervisor', label: t('common.supervisor') }
-  ];
-  
-  // Carregar dados do funcionário
+  // Carregar dados da empresa
   useEffect(() => {
-    const fetchFuncionario = async () => {
+    const fetchEmpresa = async () => {
       try {
         setLoadingData(true);
         setError(null);
         
-        const response = await api.get(`/funcionarios/${id}`);
-        
-        // Formatar a data_admissao para o formato esperado pelo campo date (YYYY-MM-DD)
-        const funcionario = response.data.data;
-        if (funcionario.data_admissao) {
-          funcionario.data_admissao = funcionario.data_admissao.split('T')[0]; // Pegar apenas a parte da data
-        }
-        
-        setFormData(funcionario);
+        const response = await api.get(`/empresas/${id}`);
+        setFormData(response.data.data);
         
       } catch (err) {
-        console.error('Erro ao carregar funcionário:', err);
-        setError(t('employees.error.notFound'));
+        console.error('Erro ao carregar empresa:', err);
+        setError(t('companies.error.notFound'));
       } finally {
         setLoadingData(false);
       }
     };
     
-    fetchFuncionario();
+    fetchEmpresa();
   }, [id, t]);
   
   // Manipulador de alteração nos campos
@@ -108,13 +87,8 @@ const FuncionarioEdit = () => {
     const errors = {};
     
     if (!formData.nome) errors.nome = t('validation.required');
-    if (!formData.cargo) errors.cargo = t('validation.required');
-    if (!formData.valor_diaria) errors.valor_diaria = t('validation.required');
-    else if (parseFloat(formData.valor_diaria) <= 0) errors.valor_diaria = t('validation.mustBePositive');
-    
-    if (formData.valor_meio_periodo && parseFloat(formData.valor_meio_periodo) <= 0) {
-      errors.valor_meio_periodo = t('validation.mustBePositive');
-    }
+    if (!formData.valor_padrao_servico) errors.valor_padrao_servico = t('validation.required');
+    else if (parseFloat(formData.valor_padrao_servico) <= 0) errors.valor_padrao_servico = t('validation.mustBePositive');
     
     return errors;
   };
@@ -137,23 +111,20 @@ const FuncionarioEdit = () => {
       // Formatar dados
       const dataToSubmit = {
         ...formData,
-        valor_diaria: parseFloat(formData.valor_diaria),
-        valor_meio_periodo: formData.valor_meio_periodo 
-          ? parseFloat(formData.valor_meio_periodo) 
-          : null
+        valor_padrao_servico: parseFloat(formData.valor_padrao_servico)
       };
       
       // Enviar dados para API
-      await api.put(`/funcionarios/${id}`, dataToSubmit);
+      await api.put(`/empresas/${id}`, dataToSubmit);
       
       // Mostrar mensagem de sucesso
-      enqueueSnackbar(t('employees.success.updated'), { variant: 'success' });
+      enqueueSnackbar(t('companies.success.updated'), { variant: 'success' });
       
       // Redirecionar para a visualização
-      navigate(`/funcionarios/${id}`);
+      navigate(`/empresas/${id}`);
       
     } catch (err) {
-      console.error('Erro ao atualizar funcionário:', err);
+      console.error('Erro ao atualizar empresa:', err);
       setError(err.response?.data?.message || t('common.errorSavingData'));
     } finally {
       setLoading(false);
@@ -174,12 +145,12 @@ const FuncionarioEdit = () => {
     <Container maxWidth="md">
       <Paper sx={{ p: 2, mb: 2 }}>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-          <Typography variant="h5">{t('employees.editEmployee')}</Typography>
+          <Typography variant="h5">{t('companies.editCompany')}</Typography>
           
           <Button
             variant="outlined"
             startIcon={<ArrowBackIcon />}
-            onClick={() => navigate(`/funcionarios/${id}`)}
+            onClick={() => navigate(`/empresas/${id}`)}
           >
             {t('common.back')}
           </Button>
@@ -196,7 +167,7 @@ const FuncionarioEdit = () => {
             <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
-                label={t('employees.name')}
+                label={t('companies.name')}
                 name="nome"
                 value={formData.nome}
                 onChange={handleChange}
@@ -208,7 +179,7 @@ const FuncionarioEdit = () => {
             <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
-                label={t('employees.japaneseName')}
+                label={t('companies.japaneseName')}
                 name="nome_japones"
                 value={formData.nome_japones}
                 onChange={handleChange}
@@ -219,7 +190,7 @@ const FuncionarioEdit = () => {
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label={t('employees.address')}
+                label={t('companies.address')}
                 name="endereco"
                 value={formData.endereco}
                 onChange={handleChange}
@@ -232,41 +203,44 @@ const FuncionarioEdit = () => {
             <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
-                label={t('employees.phone')}
-                name="telefone"
-                value={formData.telefone}
+                label={t('companies.contactName')}
+                name="contato_nome"
+                value={formData.contato_nome}
                 onChange={handleChange}
                 disabled={loading}
               />
             </Grid>
             
             <Grid item xs={12} md={6}>
-              <FormControl fullWidth>
-                <InputLabel>{t('employees.position')}</InputLabel>
-                <Select
-                  name="cargo"
-                  value={formData.cargo}
-                  onChange={handleChange}
-                  label={t('employees.position')}
-                  required
-                  disabled={loading}
-                >
-                  {cargos.map(cargo => (
-                    <MenuItem key={cargo.value} value={cargo.value}>
-                      {cargo.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <TextField
+                fullWidth
+                label={t('companies.contactPhone')}
+                name="contato_telefone"
+                value={formData.contato_telefone}
+                onChange={handleChange}
+                disabled={loading}
+              />
             </Grid>
             
             <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
-                label={t('employees.dailyRate')}
-                name="valor_diaria"
+                label={t('companies.contactEmail')}
+                name="contato_email"
+                value={formData.contato_email}
+                onChange={handleChange}
+                type="email"
+                disabled={loading}
+              />
+            </Grid>
+            
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                label={t('companies.defaultServiceRate')}
+                name="valor_padrao_servico"
                 type="number"
-                value={formData.valor_diaria}
+                value={formData.valor_padrao_servico}
                 onChange={handleChange}
                 required
                 disabled={loading}
@@ -276,59 +250,18 @@ const FuncionarioEdit = () => {
               />
             </Grid>
             
-            <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                label={t('employees.halfDayRate')}
-                name="valor_meio_periodo"
-                type="number"
-                value={formData.valor_meio_periodo}
-                onChange={handleChange}
-                disabled={loading}
-                InputProps={{
-                  startAdornment: <InputAdornment position="start">¥</InputAdornment>,
-                }}
-              />
-            </Grid>
-            
-            <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                label={t('employees.hireDate')}
-                name="data_admissao"
-                type="date"
-                value={formData.data_admissao}
-                onChange={handleChange}
-                disabled={loading}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-            
-            <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                label={t('employees.document')}
-                name="documento"
-                value={formData.documento}
-                onChange={handleChange}
-                disabled={loading}
-              />
-            </Grid>
-            
             <Grid item xs={12}>
               <FormControlLabel
                 control={
                   <Switch
-                    checked={formData.ativo}
+                    checked={formData.ativa}
                     onChange={handleSwitchChange}
-                    name="ativo"
+                    name="ativa"
                     color="primary"
                     disabled={loading}
                   />
                 }
-                label={t('employees.active')}
+                label={t('companies.active')}
               />
             </Grid>
             
@@ -350,7 +283,7 @@ const FuncionarioEdit = () => {
                 <Button
                   type="button"
                   variant="outlined"
-                  onClick={() => navigate(`/funcionarios/${id}`)}
+                  onClick={() => navigate(`/empresas/${id}`)}
                   disabled={loading}
                   sx={{ mr: 1 }}
                 >
@@ -375,4 +308,4 @@ const FuncionarioEdit = () => {
   );
 };
 
-export default FuncionarioEdit;
+export default EmpresaEdit;
