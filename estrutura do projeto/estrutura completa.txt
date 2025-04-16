@@ -98,16 +98,16 @@ kurochan-project/
 │   │   │   │   └── UserForm.jsx
 │   │   │   └── layout/
 │   │   │       ├── Footer.jsx
-│   │   │       ├── Header.jsx
+│   │   │       ├──* Header.jsx
 │   │   │       ├── LanguageSwitcher.jsx
 │   │   │       ├── Layout.jsx
 │   │   │       ├── NotificationBell.jsx
-│   │   │       ├── Sidebar.jsx
+│   │   │       ├──* Sidebar.jsx
 │   │   │       └── ThemeSwitcher.jsx
 │   │   ├── contexts/
-│   │   │   ├── AuthContext.jsx
+│   │   │   ├──* AuthContext.jsx
 │   │   │   ├── NotificationContext.jsx
-│   │   │   └── ThemeContext.jsx
+│   │   │   └──* ThemeContext.jsx
 │   │   ├── hooks/
 │   │   │   ├── useAuth.js
 │   │   │   ├── useDebounce.js
@@ -125,7 +125,7 @@ kurochan-project/
 │   │   │   │   └── AlocacoesList.jsx
 │   │   │   ├── auth/
 │   │   │   │   ├── ForgotPassword.jsx
-│   │   │   │   ├── Login.jsx
+│   │   │   │   ├──* Login.jsx
 │   │   │   │   └── Register.jsx
 │   │   │   ├── calendario/
 │   │   │   │   ├── components/
@@ -142,7 +142,7 @@ kurochan-project/
 │   │   │   │   ├── EmpresaCreate.jsx
 │   │   │   │   ├── EmpresaDetails.jsx
 │   │   │   │   ├── EmpresaEdit.jsx
-│   │   │   │   └── EmpresasList.jsx
+│   │   │   │   └──* EmpresasList.jsx
 │   │   │   ├── funcionarios/
 │   │   │   │   ├── FuncionarioCreate.jsx
 │   │   │   │   ├── FuncionarioDetails.jsx
@@ -164,8 +164,8 @@ kurochan-project/
 │   │   │       ├── UserEdit.jsx
 │   │   │       └── UsersList.jsx
 │   │   ├── services/
-│   │   │   ├── api.js
-│   │   │   ├── auth.js
+│   │   │   ├──* api.js
+│   │   │   ├──* auth.js
 │   │   │   ├── alocacoes.js
 │   │   │   ├── empresas.js
 │   │   │   ├── funcionarios.js
@@ -179,7 +179,7 @@ kurochan-project/
 │   │   │   ├── permissions.js
 │   │   │   ├── storage.js
 │   │   │   └── validators.js
-│   │   ├── App.jsx
+│   │   ├──* App.jsx
 │   │   ├── AppRoutes.jsx
 │   │   ├── index.js
 │   │   └── reportWebVitals.js
