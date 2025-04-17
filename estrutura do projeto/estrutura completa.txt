@@ -78,29 +78,29 @@ kurochan-project/
 │   │   │   ├── images/
 │   │   │   │   ├── logo-dark.png
 │   │   │   │   └── logo-light.png
-│   │   │   └── styles/
-│   │   │       ├── global.css
-│   │   │       └── themes.js
+│   │   │   └──* styles/
+│   │   │       ├──* global.css
+│   │   │       └──* themes.js
 │   │   ├── components/
-│   │   │   ├── common/
-│   │   │   │   ├── AlertDialog.jsx
-│   │   │   │   ├── ConfirmDialog.jsx
-│   │   │   │   ├── CustomButton.jsx
+│   │   │   ├──* common/
+│   │   │   │   ├──* AlertDialog.jsx
+│   │   │   │   ├──* ConfirmDialog.jsx
+│   │   │   │   ├──* CustomButton.jsx
 │   │   │   │   ├──* DataTable.jsx
-│   │   │   │   ├── LoadingButton.jsx
-│   │   │   │   ├── PageHeader.jsx
-│   │   │   │   └── StatusChip.jsx
+│   │   │   │   ├──* LoadingButton.jsx
+│   │   │   │   ├──* PageHeader.jsx
+│   │   │   │   └──* StatusChip.jsx
 │   │   │   ├── forms/
 │   │   │   │   ├── AlocacaoForm.jsx
 │   │   │   │   ├── EmpresaForm.jsx
 │   │   │   │   ├── FuncionarioForm.jsx
 │   │   │   │   ├── PagamentoForm.jsx
 │   │   │   │   └── UserForm.jsx
-│   │   │   └── layout/
+│   │   │   └──* layout/
 │   │   │       ├──* Footer.jsx
 │   │   │       ├──* Header.jsx
 │   │   │       ├──* LanguageSwitcher.jsx
-│   │   │       ├── Layout.jsx
+│   │   │       ├──* Layout.jsx
 │   │   │       ├──* NotificationBell.jsx
 │   │   │       ├──* Sidebar.jsx
 │   │   │       └──* ThemeSwitcher.jsx

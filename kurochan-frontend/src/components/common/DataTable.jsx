@@ -105,4 +105,44 @@ const DataTable = ({
                 return (
                   <TableRow
                     hover
-                    key={row.
+                    key={row.onClick={() => onRowClick && onRowClick(row)}
+                    role={onRowClick ? 'button' : undefined}
+                    tabIndex={onRowClick ? 0 : undefined}
+                    sx={{ cursor: onRowClick ? 'pointer' : 'default' }}
+                  >
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align || 'left'}>
+                          {column.format ? column.format(value, row) : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      
+      {onPageChange && onRowsPerPageChange && (
+        <TablePagination
+          component="div"
+          count={total}
+          page={page}
+          onPageChange={onPageChange}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={onRowsPerPageChange}
+          labelRowsPerPage={t('common.rowsPerPage')}
+          labelDisplayedRows={({ from, to, count }) => 
+            `${from}-${to} ${t('common.of')} ${count}`
+          }
+          rowsPerPageOptions={[5, 10, 25, 50]}
+        />
+      )}
+    </Paper>
+  );
+};
+
+export default DataTable;
