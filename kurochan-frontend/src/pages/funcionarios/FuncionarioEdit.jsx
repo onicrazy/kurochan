@@ -1,3 +1,5 @@
+// Localização: kurochan-frontend/src/pages/funcionarios/FuncionarioEdit.jsx
+
 import React, { useState, useEffect } from 'react';
 import {
   Container,
@@ -23,19 +25,16 @@ import {
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import api from '../../services/api';
 import { useSnackbar } from 'notistack';
+import api from '../../services/api';
 
-/**
- * Componente para editar um funcionário existente
- */
 const FuncionarioEdit = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
   
-  // Estado para formulário
+  // Estado do formulário
   const [formData, setFormData] = useState({
     nome: '',
     nome_japones: '',

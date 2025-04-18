@@ -1,3 +1,5 @@
+// Localização: kurochan-frontend/src/pages/funcionarios/FuncionarioCreate.jsx
+
 import React, { useState } from 'react';
 import {
   Container,
@@ -21,18 +23,15 @@ import {
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
 import { useSnackbar } from 'notistack';
+import api from '../../services/api';
 
-/**
- * Componente para criar um novo funcionário
- */
 const FuncionarioCreate = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   
-  // Estado para formulário
+  // Estado do formulário
   const [formData, setFormData] = useState({
     nome: '',
     nome_japones: '',

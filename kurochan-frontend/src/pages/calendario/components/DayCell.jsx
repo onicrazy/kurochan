@@ -1,3 +1,5 @@
+// Localização: kurochan-frontend/src/pages/calendario/components/DayCell.jsx
+
 import React from 'react';
 import {
   Box,
@@ -6,7 +8,6 @@ import {
   Chip,
   IconButton,
   Tooltip,
-  Badge,
   useTheme,
   useMediaQuery
 } from '@mui/material';
@@ -14,55 +15,61 @@ import {
   Add as AddIcon,
   Edit as EditIcon,
   Delete as DeleteIcon,
-  EventNote as EventNoteIcon
+  Visibility as VisibilityIcon
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../hooks/useAuth';
 import formatters from '../../../utils/formatters';
 
-const DayCell = ({ day, alocacoes, onAdd, onEdit, onDelete, onView }) => {
+/**
+ * Componente para célula do calendário
+ */
+const DayCell = ({ day, alocacoes = [], onAdd, onEdit, onDelete, onView }) => {
   const theme = useTheme();
-  const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+  const { t } = useTranslation();
   const { currentUser } = useAuth();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   
-  // Verificar se é um dia do mês atual
-  const isCurrentMonth = day.isCurrentMonth;
-  
   // Verificar se é hoje
-  const isToday = day.isToday;
+  const isToday = day.isSame(moment(), 'day');
   
-  // Obter o número do dia
-  const dayNumber = day.dayOfMonth;
+  // Verificar se é dia do mês atual
+  const isCurrentMonth = day.isSame(moment(), 'month');
   
   // Verificar se é fim de semana
-  const isWeekend = day.date.day() === 0 || day.date.day() === 6;
+  const isWeekend = day.day() === 0 || day.day() === 6;
   
   // Manipulador para adicionar alocação
   const handleAdd = (e) => {
     e.stopPropagation();
-    if (onAdd) onAdd(day.date);
-  };
-  
-  // Manipulador para visualizar alocação
-  const handleView = (alocacao, e) => {
-    e.stopPropagation();
-    if (onView) onView(alocacao);
+    if (onAdd && currentUser?.permissions?.canCreateAllocation) {
+      onAdd(day);
+    }
   };
   
   // Manipulador para editar alocação
   const handleEdit = (alocacao, e) => {
     e.stopPropagation();
-    if (onEdit) onEdit(alocacao);
+    if (onEdit && currentUser?.permissions?.canEditAllocation) {
+      onEdit(alocacao);
+    }
   };
   
   // Manipulador para excluir alocação
   const handleDelete = (alocacao, e) => {
     e.stopPropagation();
-    if (onDelete) onDelete(alocacao);
+    if (onDelete && currentUser?.permissions?.canDeleteAllocation) {
+      onDelete(alocacao);
+    }
+  };
+  
+  // Manipulador para visualizar alocação
+  const handleView = (alocacao, e) => {
+    e.stopPropagation();
+    if (onView) {
+      onView(alocacao);
+    }
   };
   
   return (
@@ -70,55 +77,37 @@ const DayCell = ({ day, alocacoes, onAdd, onEdit, onDelete, onView }) => {
       elevation={isToday ? 3 : 0}
       sx={{
         height: '100%',
-        minHeight: isMobile ? 70 : 120,
+        minHeight: isMobile ? 80 : 120,
         p: 1,
-        opacity: isCurrentMonth ? 1 : 0.4,
         backgroundColor: isToday 
           ? 'rgba(25, 118, 210, 0.08)'
-          : isWeekend
+          : isWeekend 
             ? 'rgba(0, 0, 0, 0.02)'
             : 'background.paper',
-        borderRadius: 1,
+        opacity: isCurrentMonth ? 1 : 0.5,
         border: '1px solid',
         borderColor: 'divider',
-        overflow: 'hidden',
         position: 'relative',
-        cursor: 'pointer',
-        '&:hover': {
-          boxShadow: 2
-        }
-      }}
-      onClick={() => {
-        if (isCurrentMonth && currentUser?.permissions?.canCreateAllocation) {
-          if (onAdd) onAdd(day.date);
-        }
+        overflow: 'hidden'
       }}
     >
-      {/* Cabeçalho da célula */}
-      <Box 
-        display="flex" 
-        justifyContent="space-between" 
-        alignItems="center"
-        sx={{
-          borderBottom: alocacoes.length > 0 ? '1px solid' : 'none',
-          borderColor: 'divider',
-          pb: alocacoes.length > 0 ? 0.5 : 0
-        }}
-      >
+      {/* Cabeçalho do dia */}
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb={0.5}>
         <Typography 
           variant="body2" 
           fontWeight={isToday ? 'bold' : 'normal'}
-          color={isToday ? 'primary.main' : 'text.primary'}
+          color={isToday ? 'primary' : 'textPrimary'}
         >
-          {dayNumber}
+          {day.date()}
         </Typography>
         
-        {isCurrentMonth && currentUser?.permissions?.canCreateAllocation && (
+        {isCurrentMonth && (
           <Tooltip title={t('calendar.addAllocation')}>
             <IconButton 
               size="small" 
-              color="primary"
+              color="primary" 
               onClick={handleAdd}
+              disabled={!currentUser?.permissions?.canCreateAllocation}
             >
               <AddIcon fontSize="small" />
             </IconButton>
@@ -126,66 +115,48 @@ const DayCell = ({ day, alocacoes, onAdd, onEdit, onDelete, onView }) => {
         )}
       </Box>
       
-      {/* Conteúdo da célula (alocações) */}
-      <Box 
-        sx={{ 
-          mt: 0.5, 
-          maxHeight: isMobile ? 'calc(100% - 30px)' : 'calc(100% - 40px)',
-          overflowY: 'auto'
-        }}
-      >
+      {/* Lista de alocações */}
+      <Box sx={{ overflowY: 'auto', maxHeight: isMobile ? '70%' : '80%' }}>
         {alocacoes.map((alocacao) => (
           <Box 
-            key={alocacao.id}
+            key={alocacao.id} 
             sx={{
               mb: 0.5,
               p: 0.5,
               borderRadius: 1,
-              backgroundColor: alocacao.empresa_cor || 'primary.main',
-              color: '#fff',
+              backgroundColor: alocacao.empresa_cor || theme.palette.primary.main,
+              color: 'white',
+              fontSize: '0.75rem',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              fontSize: '0.75rem',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis'
+              cursor: 'pointer'
             }}
+            onClick={(e) => handleView(alocacao, e)}
           >
-            <Typography
-              variant="caption"
-              sx={{
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                flex: 1
-              }}
-              onClick={(e) => handleView(alocacao, e)}
-            >
+            <Typography variant="caption" noWrap sx={{ flex: 1 }}>
               {alocacao.funcionario_nome}
             </Typography>
             
             {!isMobile && (
-              <Box display="flex">
-                {currentUser?.permissions?.canEditAllocation && (
-                  <IconButton 
-                    size="small" 
-                    sx={{ color: '#fff', p: 0.2, mx: 0.1 }}
-                    onClick={(e) => handleEdit(alocacao, e)}
-                  >
-                    <EditIcon fontSize="inherit" />
-                  </IconButton>
-                )}
+              <Box>
+                <IconButton 
+                  size="small" 
+                  sx={{ color: 'white', p: 0.2 }}
+                  onClick={(e) => handleEdit(alocacao, e)}
+                  disabled={!currentUser?.permissions?.canEditAllocation}
+                >
+                  <EditIcon fontSize="inherit" />
+                </IconButton>
                 
-                {currentUser?.permissions?.canDeleteAllocation && (
-                  <IconButton 
-                    size="small" 
-                    sx={{ color: '#fff', p: 0.2, mx: 0.1 }}
-                    onClick={(e) => handleDelete(alocacao, e)}
-                  >
-                    <DeleteIcon fontSize="inherit" />
-                  </IconButton>
-                )}
+                <IconButton 
+                  size="small" 
+                  sx={{ color: 'white', p: 0.2 }}
+                  onClick={(e) => handleDelete(alocacao, e)}
+                  disabled={!currentUser?.permissions?.canDeleteAllocation}
+                >
+                  <DeleteIcon fontSize="inherit" />
+                </IconButton>
               </Box>
             )}
           </Box>
