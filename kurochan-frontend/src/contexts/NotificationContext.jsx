@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import React, { createContext, useContext } from 'react';
+import { useSnackbar } from 'notistack';
 
 // Criar o contexto
 const NotificationContext = createContext();
@@ -7,8 +7,8 @@ const NotificationContext = createContext();
 // Hook personalizado para usar o contexto
 export const useNotification = () => useContext(NotificationContext);
 
-// Componente interno que utiliza o hook useSnackbar
-const NotificationController = ({ children }) => {
+// Provedor do contexto
+export const NotificationProvider = ({ children }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   
   // Função para mostrar notificação de sucesso
@@ -43,38 +43,19 @@ const NotificationController = ({ children }) => {
     });
   };
   
-  // Função para fechar notificação
-  const closeNotification = (key) => {
-    closeSnackbar(key);
-  };
-  
   // Valor do contexto
-  const contextValue = {
+  const value = {
     showSuccess,
     showError,
     showInfo,
     showWarning,
-    closeNotification
+    closeSnackbar
   };
   
   return (
-    <NotificationContext.Provider value={contextValue}>
+    <NotificationContext.Provider value={value}>
       {children}
     </NotificationContext.Provider>
-  );
-};
-
-// Provedor principal que combina o SnackbarProvider com o nosso contexto
-export const NotificationProvider = ({ children }) => {
-  return (
-    <SnackbarProvider
-      maxSnack={3}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-    >
-      <NotificationController>
-        {children}
-      </NotificationController>
-    </SnackbarProvider>
   );
 };
 
