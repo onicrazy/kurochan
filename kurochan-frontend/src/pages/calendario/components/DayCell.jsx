@@ -22,6 +22,14 @@ import formatters from '../../../utils/formatters';
 
 /**
  * Componente para célula do calendário
+ * @param {Object} props - Propriedades do componente
+ * @param {moment.Moment} props.day - Objeto de data do dia
+ * @param {Array} props.alocacoes - Lista de alocações para o dia
+ * @param {Function} props.onAdd - Função para adicionar alocação
+ * @param {Function} props.onEdit - Função para editar alocação
+ * @param {Function} props.onDelete - Função para excluir alocação
+ * @param {Function} props.onView - Função para visualizar alocação
+ * @returns {JSX.Element} Componente DayCell
  */
 const DayCell = ({ day, alocacoes = [], onAdd, onEdit, onDelete, onView }) => {
   const theme = useTheme();
