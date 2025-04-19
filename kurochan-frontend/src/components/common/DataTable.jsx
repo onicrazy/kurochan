@@ -101,26 +101,25 @@ const DataTable = ({
                 </TableCell>
               </TableRow>
             ) : (
-              data.map((row, index) => {
-                return (
-                  <TableRow
-                    hover
-                    key={row.onClick={() => onRowClick && onRowClick(row)}
-                    role={onRowClick ? 'button' : undefined}
-                    tabIndex={onRowClick ? 0 : undefined}
-                    sx={{ cursor: onRowClick ? 'pointer' : 'default' }}
-                  >
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align || 'left'}>
-                          {column.format ? column.format(value, row) : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })
+              data.map((row, index) => (
+                <TableRow
+                  hover
+                  key={row.id || index}
+                  onClick={() => onRowClick && onRowClick(row)}
+                  role={onRowClick ? 'button' : undefined}
+                  tabIndex={onRowClick ? 0 : undefined}
+                  sx={{ cursor: onRowClick ? 'pointer' : 'default' }}
+                >
+                  {columns.map((column) => {
+                    const value = row[column.id];
+                    return (
+                      <TableCell key={column.id} align={column.align || 'left'}>
+                        {column.format ? column.format(value, row) : value}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              ))
             )}
           </TableBody>
         </Table>

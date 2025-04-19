@@ -120,4 +120,22 @@ const RevenueChart = ({ data, loading }) => {
         <Box display="flex" justifyContent="center" alignItems="center" height={300}>
           <CircularProgress />
         </Box>
-      ) : data?.meses?.length
+      ) : data?.meses?.length > 0 ? (
+        <Box height={300}>
+          <Line 
+            data={chartData} 
+            options={chartOptions}
+          />
+        </Box>
+      ) : (
+        <Box display="flex" justifyContent="center" alignItems="center" height={300}>
+          <Typography variant="body1" color="textSecondary">
+            {t('dashboard.noDataAvailable')}
+          </Typography>
+        </Box>
+      )}
+    </Paper>
+  );
+};
+
+export default RevenueChart;

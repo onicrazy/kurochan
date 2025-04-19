@@ -34,8 +34,12 @@
     "decrease": "減少",
     "noChange": "変更なし",
     "operator": "オペレーター",
-    "supervisor": "スーパーバイザー"
-	"selectAll": "すべて選択"
+    "supervisor": "スーパーバイザー",
+    "confirm": "確認",
+    "select": "選択",
+    "selectAll": "すべて選択",
+    "seeAll": "すべて見る",
+    "total": "合計"
   },
   "auth": {
     "login": "ログイン",
@@ -50,8 +54,12 @@
     "confirmPassword": "パスワード（確認）",
     "error": {
       "invalidCredentials": "無効なメールアドレスまたはパスワードです",
-      "incorrectPassword": "現在のパスワードが正しくありません"
-    }
+      "incorrectPassword": "現在のパスワードが正しくありません",
+      "resetPasswordFailed": "パスワードリセットリクエストでエラーが発生しました"
+    },
+    "resetPasswordEmailSent": "パスワードリセットメールを送信しました",
+    "sendResetLink": "リセットリンクを送信",
+    "backToLogin": "ログインに戻る"
   },
   "menu": {
     "dashboard": "ダッシュボード",
@@ -61,7 +69,8 @@
     "allocations": "配置",
     "payments": "支払い",
     "reports": "レポート",
-    "settings": "設定"
+    "settings": "設定",
+    "total": "合計"
   },
   "dashboard": {
     "welcome": "ようこそ、{{name}}さん",
@@ -200,4 +209,125 @@
       "fetchCompaniesFailed": "会社データの読み込みにエラーが発生しました",
       "fetchEmployeesFailed": "従業員データの読み込みにエラーが発生しました",
       "saveFailed": "配置の保存にエラーが発生しました",
-      "deleteFailed": "配置の削除にエラーが発生しました
+      "deleteFailed": "配置の削除にエラーが発生しました",
+      "fetchRelatedData": "関連データの読み込みにエラーが発生しました"
+    }
+  },
+  "payments": {
+    "title": "支払い",
+    "employeePayments": "従業員への支払い",
+    "companyInvoices": "会社への請求",
+    "period": "期間",
+    "newEmployeePayment": "新規支払い",
+    "newCompanyInvoice": "新規請求",
+    "paymentDate": "支払日",
+    "dueDate": "支払期限",
+    "invoiceDate": "請求日",
+    "paymentMethod": "支払方法",
+    "reference": "参照番号",
+    "paid": "支払済み",
+    "pending": "未払い",
+    "partial": "一部支払い",
+    "noEmployeePayments": "支払いが見つかりません",
+    "noCompanyInvoices": "請求書が見つかりません",
+    "recent": "最近の支払い",
+    "noRecords": "記録が見つかりません",
+    "total": "合計",
+    "error": {
+      "loadEmployeePaymentsFailed": "従業員への支払いの読み込みにエラーが発生しました",
+      "loadCompanyInvoicesFailed": "会社への請求の読み込みにエラーが発生しました",
+      "loadFailed": "支払いの読み込みにエラーが発生しました"
+    }
+  },
+  "reports": {
+    "title": "レポート",
+    "financialReport": "財務レポート",
+    "employeeReport": "従業員レポート",
+    "companyReport": "会社レポート",
+    "allocationReport": "配置レポート",
+    "periodType": "期間タイプ",
+    "monthly": "月次",
+    "quarterly": "四半期",
+    "yearly": "年次",
+    "custom": "カスタム",
+    "startDate": "開始日",
+    "endDate": "終了日",
+    "financialReportDescription": "期間中の収入、支出、利益の財務概要",
+    "employeeReportDescription": "配置と支払いを含む従業員レポート",
+    "companyReportDescription": "配置と請求を含む会社レポート",
+    "allocationReportDescription": "期間中の詳細な配置レポート",
+    "success": {
+      "generated": "レポートが正常に生成されました"
+    },
+    "error": {
+      "generateFailed": "レポートの生成にエラーが発生しました"
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "profile": "プロフィール",
+    "security": "セキュリティ",
+    "language": "言語",
+    "portuguese": "ポルトガル語",
+    "japanese": "日本語",
+    "light": "ライトモード",
+    "dark": "ダークモード",
+    "notifications": "通知",
+    "saveChanges": "変更を保存",
+    "changePassword": "パスワード変更",
+    "cannotChangeEmail": "メールアドレスは変更できません",
+    "success": {
+      "settingsUpdated": "設定が正常に更新されました",
+      "passwordChanged": "パスワードが正常に変更されました"
+    },
+    "error": {
+      "updateFailed": "設定の更新にエラーが発生しました"
+    }
+  },
+  "users": {
+    "title": "ユーザー",
+    "newUser": "新規ユーザー",
+    "editUser": "ユーザーを編集",
+    "name": "名前",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "confirmPassword": "パスワード（確認）",
+    "role": "役割",
+    "language": "言語",
+    "active": "有効",
+    "administrator": "管理者",
+    "manager": "マネージャー",
+    "operator": "オペレーター",
+    "administratorDescription": "システムへの完全アクセス",
+    "managerDescription": "従業員、会社、支払いの管理が可能",
+    "operatorDescription": "データの閲覧と配置の登録が可能",
+    "emailCannotBeChanged": "メールアドレスは変更できません",
+    "cannotChangeSelfRole": "自分の役割は変更できません",
+    "cannotDeactivateSelf": "自分のアカウントを無効にすることはできません",
+    "confirmDelete": "ユーザー {{name}} を削除してもよろしいですか？",
+    "success": {
+      "created": "ユーザーが正常に作成されました",
+      "updated": "ユーザーが正常に更新されました",
+      "deleted": "ユーザーが正常に削除されました"
+    },
+    "error": {
+      "notFound": "ユーザーが見つかりません",
+      "emailAlreadyExists": "このメールアドレスは既に使用されています",
+      "cannotDeleteYourself": "自分のアカウントを削除することはできません",
+      "deleteFailed": "ユーザーの削除にエラーが発生しました"
+    }
+  },
+  "validation": {
+    "required": "必須フィールドです",
+    "invalidEmail": "無効なメールアドレスです",
+    "passwordTooShort": "パスワードは6文字以上である必要があります",
+    "passwordMismatch": "パスワードが一致しません",
+    "mustBePositive": "値は0より大きい必要があります",
+    "atLeastOneRequired": "少なくとも1つ選択してください"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved",
+    "termsOfService": "利用規約",
+    "privacyPolicy": "プライバシーポリシー"
+  }
+}
