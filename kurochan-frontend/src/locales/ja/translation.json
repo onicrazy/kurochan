@@ -35,6 +35,7 @@
     "noChange": "変更なし",
     "operator": "オペレーター",
     "supervisor": "スーパーバイザー"
+	"selectAll": "すべて選択"
   },
   "auth": {
     "login": "ログイン",

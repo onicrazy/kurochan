@@ -1,11 +1,18 @@
-// Localização: kurochan-frontend/src/contexts/ThemeContext.jsx
-
-import React, { createContext, useState, useEffect, useMemo } from 'react';
-import { ThemeProvider, createTheme } from '@mui/material';
+import React, { createContext, useState, useContext, useMemo } from 'react';
+import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
 import getTheme from '../assets/styles/themes';
 
 // Criar contexto
 const ThemeContext = createContext();
+
+// Hook personalizado para acessar o contexto
+export const useThemeContext = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useThemeContext deve ser usado dentro de um ThemeProvider');
+  }
+  return context;
+};
 
 // Provedor do contexto
 export const ThemeProvider = ({ children }) => {
@@ -32,20 +39,11 @@ export const ThemeProvider = ({ children }) => {
   
   return (
     <ThemeContext.Provider value={value}>
-      <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
         {children}
-      </ThemeProvider>
+      </MuiThemeProvider>
     </ThemeContext.Provider>
   );
-};
-
-// Hook personalizado para acessar o contexto
-export const useThemeContext = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useThemeContext deve ser usado dentro de um ThemeProvider');
-  }
-  return context;
 };
 
 export default ThemeContext;

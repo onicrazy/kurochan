@@ -1,49 +1,73 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Box, Grid, Typography, Paper, Chip, Button, CircularProgress, Alert } from '@mui/material';
+import { 
+  Container, 
+  Paper, 
+  Grid, 
+  Typography, 
+  Box, 
+  Button, 
+  IconButton, 
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  CircularProgress,
+  Alert
+} from '@mui/material';
+import {
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+  Add as AddIcon,
+  Assignment as AssignmentIcon
+} from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
-import { api } from '../../../services/api';
-import DayCell from './DayCell';
+import { useSnackbar } from 'notistack';
 
-const CalendarioAlocacoes = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [alocacoes, setAlocacoes] = useState([]);
+import api from '../../services/api';
+import DayCell from './components/DayCell';
+import AlocacaoForm from '../../components/forms/AlocacaoForm';
+
+const Calendario = () => {
+  const { t, i18n } = useTranslation();
+  const { enqueueSnackbar } = useSnackbar();
+
+  // Estado para controle do mês e ano atual
   const [currentDate, setCurrentDate] = useState(moment());
   
-  // Memorizar o primeiro e último dia do mês atual
-  const { firstDay, lastDay, currentMonth, currentYear } = useMemo(() => {
-    const firstDay = moment(currentDate).startOf('month');
-    const lastDay = moment(currentDate).endOf('month');
-    return {
-      firstDay,
-      lastDay,
-      currentMonth: currentDate.format('MMMM'),
-      currentYear: currentDate.format('YYYY')
-    };
-  }, [currentDate]);
-
-  // Gerar array de semanas e dias para o calendário
+  // Estado para dados
+  const [alocacoes, setAlocacoes] = useState([]);
+  const [empresas, setEmpresas] = useState([]);
+  const [funcionarios, setFuncionarios] = useState([]);
+  
+  // Estados para carregamento e erro
+  const [loadingAlocacoes, setLoadingAlocacoes] = useState(false);
+  const [loadingRelated, setLoadingRelated] = useState(false);
+  const [error, setError] = useState(null);
+  
+  // Estados para modais
+  const [openAlocacaoModal, setOpenAlocacaoModal] = useState(false);
+  const [selectedAlocacao, setSelectedAlocacao] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [savingAlocacao, setSavingAlocacao] = useState(false);
+  
+  // Gerar dias do calendário
   const calendarDays = useMemo(() => {
-    // Iniciar com o primeiro dia da semana que contém o primeiro dia do mês
+    // Primeiro dia do mês
+    const firstDay = moment(currentDate).startOf('month');
+    // Último dia do mês
+    const lastDay = moment(currentDate).endOf('month');
+    
+    // Primeiro dia da semana (domingo)
     const startDate = moment(firstDay).startOf('week');
-    // Terminar no último dia da semana que contém o último dia do mês
+    // Último dia da semana (sábado)
     const endDate = moment(lastDay).endOf('week');
     
     const days = [];
     let week = [];
     
+    // Gerar dias do calendário
     for (let day = moment(startDate); day.isSameOrBefore(endDate); day.add(1, 'day')) {
-      week.push({
-        date: moment(day),
-        isCurrentMonth: day.month() === currentDate.month(),
-        isToday: day.isSame(moment(), 'day'),
-        dayOfMonth: day.date()
-      });
+      week.push(moment(day));
       
       if (week.length === 7) {
         days.push([...week]);
@@ -52,197 +76,277 @@ const CalendarioAlocacoes = () => {
     }
     
     return days;
-  }, [firstDay, lastDay, currentDate]);
-
-  // Mapeamento de alocações por data
-  const alocacoesPorData = useMemo(() => {
-    const map = {};
-    
-    alocacoes.forEach(alocacao => {
-      const dataKey = moment(alocacao.data_alocacao).format('YYYY-MM-DD');
-      if (!map[dataKey]) {
-        map[dataKey] = [];
-      }
-      map[dataKey].push(alocacao);
-    });
-    
-    return map;
-  }, [alocacoes]);
-
-  // Carregar alocações do mês atual
+  }, [currentDate]);
+  
+  // Dias da semana
+  const weekDays = useMemo(() => {
+    return moment.weekdaysShort();
+  }, []);
+  
+  // Buscar dados das alocações
   useEffect(() => {
-    const fetchAlocacoes = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        const ano = currentDate.year();
-        const mes = currentDate.month() + 1; // Mês no Moment.js começa em 0
-        
-        const response = await api.get(`/alocacoes/calendario/${ano}/${mes}`);
-        setAlocacoes(response.data.data);
-        
-      } catch (err) {
-        console.error('Erro ao buscar alocações:', err);
-        setError(t('calendar.error.fetchFailed'));
-      } finally {
-        setLoading(false);
-      }
-    };
-    
     fetchAlocacoes();
-  }, [currentDate, t]);
-
+  }, [currentDate]);
+  
+  // Função para buscar alocações
+  const fetchAlocacoes = async () => {
+    try {
+      setLoadingAlocacoes(true);
+      setError(null);
+      
+      const ano = currentDate.year();
+      const mes = currentDate.month() + 1; // Mês no Moment.js começa em 0
+      
+      const response = await api.get(`/alocacoes/calendario/${ano}/${mes}`);
+      setAlocacoes(response.data.data);
+      
+    } catch (err) {
+      console.error('Erro ao buscar alocações:', err);
+      setError(t('calendar.error.fetchFailed'));
+    } finally {
+      setLoadingAlocacoes(false);
+    }
+  };
+  
+  // Função para buscar empresas e funcionários
+  const fetchRelatedData = async () => {
+    try {
+      setLoadingRelated(true);
+      
+      // Buscar empresas
+      const empresasResponse = await api.get('/empresas', {
+        params: { ativa: true }
+      });
+      
+      // Buscar funcionários
+      const funcionariosResponse = await api.get('/funcionarios', {
+        params: { ativo: true }
+      });
+      
+      setEmpresas(empresasResponse.data.data);
+      setFuncionarios(funcionariosResponse.data.data);
+      
+    } catch (err) {
+      console.error('Erro ao buscar dados relacionados:', err);
+      enqueueSnackbar(
+        err.response?.data?.message || t('calendar.error.fetchRelatedFailed'), 
+        { variant: 'error' }
+      );
+    } finally {
+      setLoadingRelated(false);
+    }
+  };
+  
+  // Obter alocações para um dia específico
+  const getAlocacoesForDay = (day) => {
+    return alocacoes.filter(alocacao => 
+      moment(alocacao.data_alocacao).isSame(day, 'day')
+    );
+  };
+  
   // Navegar para o mês anterior
-  const handlePreviousMonth = () => {
+  const goToPreviousMonth = () => {
     setCurrentDate(moment(currentDate).subtract(1, 'month'));
   };
-
+  
   // Navegar para o próximo mês
-  const handleNextMonth = () => {
+  const goToNextMonth = () => {
     setCurrentDate(moment(currentDate).add(1, 'month'));
   };
-
-  // Navegar para o mês atual
-  const handleCurrentMonth = () => {
-    setCurrentDate(moment());
+  
+  // Manipulador para adicionar alocação
+  const handleAddAlocacao = (day) => {
+    setSelectedDate(day);
+    setSelectedAlocacao(null);
+    fetchRelatedData();
+    setOpenAlocacaoModal(true);
   };
-
-  // Criar nova alocação
-  const handleNovaAlocacao = () => {
-    navigate('/alocacoes/nova');
+  
+  // Manipulador para editar alocação
+  const handleEditAlocacao = (alocacao) => {
+    setSelectedAlocacao(alocacao);
+    setSelectedDate(null);
+    fetchRelatedData();
+    setOpenAlocacaoModal(true);
   };
-
-  // Gerar relatório do mês
-  const handleGerarRelatorio = () => {
-    const ano = currentDate.year();
-    const mes = currentDate.month() + 1;
-    navigate(`/relatorios/alocacoes?ano=${ano}&mes=${mes}`);
+  
+  // Manipulador para fechar modal de alocação
+  const handleCloseAlocacaoModal = () => {
+    setOpenAlocacaoModal(false);
+    setSavingAlocacao(false);
   };
-
-  // Renderizar cabeçalho dos dias da semana
-  const weekDays = useMemo(() => {
-    return moment.weekdaysShort().map(day => (
-      <Grid item xs key={day}>
-        <Typography 
-          variant="subtitle1" 
-          align="center" 
-          sx={{ 
-            fontWeight: 'bold',
-            backgroundColor: 'primary.main',
-            color: 'primary.contrastText',
-            py: 1,
-            borderRadius: '4px 4px 0 0'
-          }}
-        >
-          {day}
-        </Typography>
-      </Grid>
-    ));
-  }, []);
-
+  
+  // Manipulador para salvar alocação
+  const handleSaveAlocacao = async (formData) => {
+    try {
+      setSavingAlocacao(true);
+      
+      if (selectedAlocacao) {
+        // Edição
+        await api.put(`/alocacoes/${selectedAlocacao.id}`, formData);
+        enqueueSnackbar(t('calendar.success.allocationUpdated'), { variant: 'success' });
+      } else {
+        // Criação
+        await api.post('/alocacoes', formData);
+        enqueueSnackbar(t('calendar.success.allocationCreated'), { variant: 'success' });
+      }
+      
+      // Fechar modal e atualizar dados
+      handleCloseAlocacaoModal();
+      fetchAlocacoes();
+      
+    } catch (err) {
+      console.error('Erro ao salvar alocação:', err);
+      enqueueSnackbar(
+        err.response?.data?.message || t('calendar.error.saveFailed'), 
+        { variant: 'error' }
+      );
+    } finally {
+      setSavingAlocacao(false);
+    }
+  };
+  
+  // Manipulador para excluir alocação
+  const handleDeleteAlocacao = async (alocacao) => {
+    if (confirm(t('calendar.deleteConfirmMessage', {
+      funcionario: alocacao.funcionario_nome,
+      data: moment(alocacao.data_alocacao).format('L')
+    }))) {
+      try {
+        await api.delete(`/alocacoes/${alocacao.id}`);
+        enqueueSnackbar(t('calendar.success.allocationDeleted'), { variant: 'success' });
+        fetchAlocacoes();
+      } catch (err) {
+        console.error('Erro ao excluir alocação:', err);
+        enqueueSnackbar(
+          err.response?.data?.message || t('calendar.error.deleteFailed'), 
+          { variant: 'error' }
+        );
+      }
+    }
+  };
+  
+  // Manipulador para visualizar alocação
+  const handleViewAlocacao = (alocacao) => {
+    // Navegar para a página de detalhes da alocação
+    window.location.href = `/alocacoes/${alocacao.id}`;
+  };
+  
   return (
-    <Box sx={{ p: 2 }}>
-      <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
-        {/* Controles de navegação e ações */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-          <Box>
-            <Button 
-              variant="outlined" 
-              onClick={handlePreviousMonth} 
-              sx={{ mr: 1 }}
-            >
-              &lt;
-            </Button>
+    <Container maxWidth="xl">
+      <Paper sx={{ p: 2, mb: 2 }}>
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+          <Typography variant="h5">{t('calendar.title')}</Typography>
+          
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            onClick={() => handleAddAlocacao(moment())}
+          >
+            {t('calendar.addAllocation')}
+          </Button>
+        </Box>
+        
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+          <Box display="flex" alignItems="center">
+            <IconButton onClick={goToPreviousMonth}>
+              <ChevronLeftIcon />
+            </IconButton>
             
-            <Typography variant="h5" component="span" sx={{ mx: 2 }}>
-              {currentMonth} {currentYear}
+            <Typography variant="h6" sx={{ mx: 2 }}>
+              {currentDate.format('MMMM YYYY')}
             </Typography>
             
-            <Button 
-              variant="outlined" 
-              onClick={handleNextMonth} 
-              sx={{ ml: 1 }}
-            >
-              &gt;
-            </Button>
-            
-            <Button 
-              variant="text" 
-              onClick={handleCurrentMonth} 
-              sx={{ ml: 2 }}
-            >
-              {t('common.today')}
-            </Button>
+            <IconButton onClick={goToNextMonth}>
+              <ChevronRightIcon />
+            </IconButton>
           </Box>
           
           <Box>
-            <Button 
-              variant="contained" 
-              color="primary" 
-              onClick={handleNovaAlocacao} 
-              sx={{ mr: 2 }}
-            >
-              {t('calendar.addAllocation')}
-            </Button>
-            
-            <Button 
-              variant="outlined" 
-              color="secondary" 
-              onClick={handleGerarRelatorio}
+            <Button
+              variant="outlined"
+              startIcon={<AssignmentIcon />}
+              onClick={() => window.location.href = `/relatorios?mes=${currentDate.month() + 1}&ano=${currentDate.year()}`}
             >
               {t('calendar.generateReport')}
             </Button>
           </Box>
         </Box>
         
-        {/* Exibir erro se houver */}
         {error && (
           <Alert severity="error" sx={{ mb: 2 }}>
             {error}
           </Alert>
         )}
         
-        {/* Calendário */}
-        {loading ? (
-          <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+        {loadingAlocacoes ? (
+          <Box display="flex" justifyContent="center" alignItems="center" py={4}>
             <CircularProgress />
           </Box>
         ) : (
-          <Grid container spacing={1}>
-            {/* Cabeçalho dos dias da semana */}
-            {weekDays}
-            
-            {/* Dias do calendário */}
-            {calendarDays.map((week, weekIndex) => (
-              week.map((day, dayIndex) => (
-                <Grid item xs key={`${weekIndex}-${dayIndex}`}>
-                  <DayCell 
-                    day={day}
-                    alocacoes={alocacoesPorData[day.date.format('YYYY-MM-DD')] || []}
-                  />
+          <>
+            {/* Cabeçalho com os dias da semana */}
+            <Grid container sx={{ mb: 1 }}>
+              {weekDays.map((day, index) => (
+                <Grid item xs key={index} sx={{ textAlign: 'center' }}>
+                  <Typography fontWeight="bold">
+                    {day}
+                  </Typography>
                 </Grid>
-              ))
-            ))}
-          </Grid>
+              ))}
+            </Grid>
+            
+            {/* Grade do calendário */}
+            <Grid container spacing={1}>
+              {calendarDays.map((week, weekIndex) => (
+                week.map((day, dayIndex) => (
+                  <Grid item xs key={`${weekIndex}-${dayIndex}`}>
+                    <DayCell
+                      day={day}
+                      alocacoes={getAlocacoesForDay(day)}
+                      onAdd={handleAddAlocacao}
+                      onEdit={handleEditAlocacao}
+                      onDelete={handleDeleteAlocacao}
+                      onView={handleViewAlocacao}
+                    />
+                  </Grid>
+                ))
+              ))}
+            </Grid>
+          </>
         )}
       </Paper>
       
-      {/* Legenda */}
-      <Paper elevation={2} sx={{ p: 2 }}>
-        <Typography variant="subtitle1" sx={{ mb: 1 }}>
-          {t('common.legend')}:
-        </Typography>
-        
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          <Chip label={t('allocation.paid')} color="success" />
-          <Chip label={t('allocation.pending')} color="warning" />
-          <Chip label={t('employees.driver')} sx={{ backgroundColor: '#4285F4', color: 'white' }} />
-          <Chip label={t('employees.assistant')} sx={{ backgroundColor: '#34A853', color: 'white' }} />
-        </Box>
-      </Paper>
-    </Box>
+      {/* Modal de Alocação */}
+      <Dialog
+        open={openAlocacaoModal}
+        onClose={!savingAlocacao ? handleCloseAlocacaoModal : undefined}
+        maxWidth="md"
+        fullWidth
+      >
+        <DialogTitle>
+          {selectedAlocacao ? t('calendar.editAllocation') : t('calendar.newAllocation')}
+        </DialogTitle>
+        <DialogContent>
+          {loadingRelated ? (
+            <Box display="flex" justifyContent="center" py={3}>
+              <CircularProgress />
+            </Box>
+          ) : (
+            <AlocacaoForm
+              alocacao={selectedAlocacao}
+              data={selectedDate ? selectedDate.format('YYYY-MM-DD') : null}
+              empresas={empresas}
+              funcionarios={funcionarios}
+              onSave={handleSaveAlocacao}
+              onCancel={handleCloseAlocacaoModal}
+              loading={savingAlocacao}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+    </Container>
   );
 };
 
-export default CalendarioAlocacoes;
+export default Calendario;

@@ -1,5 +1,3 @@
-// Localização: kurochan-frontend/src/pages/calendario/components/DayCell.jsx
-
 import React from 'react';
 import {
   Box,

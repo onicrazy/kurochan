@@ -67,11 +67,11 @@ kurochan-project/
 ├── kurochan-frontend/
 │   ├── public/
 │   │   ├── favicon.ico
-│   │   ├── index.html
+│   │   ├──* index.html
 │   │   ├── logo192.png
 │   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
+│   │   ├──* manifest.json
+│   │   └──* robots.txt
 │   ├── src/
 │   │   ├── assets/
 │   │   │   ├── fonts/
@@ -92,8 +92,8 @@ kurochan-project/
 │   │   │   │   └──* StatusChip.jsx
 │   │   │   ├── forms/
 │   │   │   │   ├── AlocacaoForm.jsx
-│   │   │   │   ├── EmpresaForm.jsx
-│   │   │   │   ├── FuncionarioForm.jsx
+│   │   │   │   ├──* EmpresaForm.jsx
+│   │   │   │   ├──* FuncionarioForm.jsx
 │   │   │   │   ├── PagamentoForm.jsx
 │   │   │   │   └── UserForm.jsx
 │   │   │   └──* layout/
@@ -124,7 +124,7 @@ kurochan-project/
 │   │   │   │   ├──* AlocacaoDetails.jsx
 │   │   │   │   └──* AlocacoesList.jsx
 │   │   │   ├── auth/
-│   │   │   │   ├── ForgotPassword.jsx
+│   │   │   │   ├──* ForgotPassword.jsx
 │   │   │   │   ├──* Login.jsx
 │   │   │   │   └── Register.jsx
 │   │   │   ├── calendario/
@@ -160,10 +160,10 @@ kurochan-project/
 │   │   │   ├── settings/
 │   │   │   │   ├──* ProfileSettings.jsx
 │   │   │   │   └── SystemSettings.jsx
-│   │   │   └── users/
-│   │   │       ├── UserCreate.jsx
-│   │   │       ├── UserEdit.jsx
-│   │   │       └── UsersList.jsx
+│   │   │   └──* users/
+│   │   │       ├──* UserCreate.jsx
+│   │   │       ├──* UserEdit.jsx
+│   │   │       └──* UsersList.jsx
 │   │   ├──* services/
 │   │   │   ├──* api.js
 │   │   │   ├──* auth.js
@@ -183,11 +183,11 @@ kurochan-project/
 │   │   ├──* App.jsx
 │   │   ├── AppRoutes.jsx
 │   │   ├──* index.js
-│   │   └── reportWebVitals.js
+│   │   └──* reportWebVitals.js
 │   ├── .env
 │   ├── .env.example
 │   ├── .gitignore
-│   ├── jsconfig.json
+│   ├──* jsconfig.json
 │   ├── package.json
 │   └── README.md
 │

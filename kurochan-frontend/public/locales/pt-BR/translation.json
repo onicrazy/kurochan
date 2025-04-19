@@ -1,0 +1,324 @@
+{
+  "common": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "view": "Visualizar",
+    "add": "Adicionar",
+    "back": "Voltar",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "clear": "Limpar",
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "all": "Todos",
+    "actions": "Ações",
+    "status": "Status",
+    "details": "Detalhes",
+    "observations": "Observações",
+    "createdAt": "Data de Criação",
+    "updatedAt": "Data de Atualização",
+    "of": "de",
+    "yes": "Sim",
+    "no": "Não",
+    "viewAll": "Ver todos",
+    "noResults": "Nenhum resultado encontrado",
+    "rowsPerPage": "Linhas por página",
+    "errorLoadingData": "Erro ao carregar dados",
+    "errorSavingData": "Erro ao salvar dados",
+    "errorLoadingRelatedData": "Erro ao carregar dados relacionados",
+    "legend": "Legenda",
+    "today": "Hoje",
+    "increase": "aumento",
+    "decrease": "redução",
+    "noChange": "sem alteração",
+    "operator": "Operador",
+    "supervisor": "Supervisor",
+    "confirm": "Confirmar",
+    "select": "Selecione"
+  },
+  "auth": {
+    "login": "Entrar",
+    "logout": "Sair",
+    "email": "E-mail",
+    "password": "Senha",
+    "rememberMe": "Lembrar-me",
+    "forgotPassword": "Esqueceu a senha?",
+    "loginToSystem": "Entrar no sistema",
+    "currentPassword": "Senha atual",
+    "newPassword": "Nova senha",
+    "confirmPassword": "Confirmar senha",
+    "error": {
+      "invalidCredentials": "E-mail ou senha inválidos",
+      "incorrectPassword": "Senha atual incorreta"
+    },
+    "resetPasswordEmailSent": "E-mail de redefinição de senha enviado",
+    "sendResetLink": "Enviar link de redefinição",
+    "backToLogin": "Voltar ao login"
+  },
+  "menu": {
+    "dashboard": "Dashboard",
+    "calendar": "Calendário",
+    "employees": "Funcionários",
+    "companies": "Empresas",
+    "allocations": "Alocações",
+    "payments": "Pagamentos",
+    "reports": "Relatórios",
+    "settings": "Configurações"
+  },
+  "dashboard": {
+    "welcome": "Bem-vindo, {{name}}",
+    "monthlyRevenue": "Receita Mensal",
+    "monthlyExpenses": "Despesas Mensais",
+    "monthlyProfit": "Lucro Mensal",
+    "todayAllocations": "Alocações de Hoje",
+    "employeesWorking": "Funcionários trabalhando",
+    "pendingPayments": "Pagamentos Pendentes",
+    "noOutstandingPayments": "Não há pagamentos pendentes",
+    "noAllocationsToday": "Não há alocações para hoje",
+    "monthlyFinancialChart": "Gráfico Financeiro Mensal",
+    "allocationsPerCompany": "Alocações por Empresa",
+    "noDataAvailable": "Nenhum dado disponível",
+    "viewCalendar": "Ver Calendário",
+    "managePayments": "Gerenciar Pagamentos",
+    "revenue": "Receita",
+    "expenses": "Despesas",
+    "profit": "Lucro",
+    "error": {
+      "financialSummary": "Erro ao carregar resumo financeiro",
+      "todayAllocations": "Erro ao carregar alocações de hoje",
+      "pendingPayments": "Erro ao carregar pagamentos pendentes",
+      "pendingReceivables": "Erro ao carregar recebíveis pendentes",
+      "monthlyStatistics": "Erro ao carregar estatísticas mensais"
+    }
+  },
+  "employees": {
+    "title": "Funcionários",
+    "newEmployee": "Novo Funcionário",
+    "editEmployee": "Editar Funcionário",
+    "details": "Detalhes do Funcionário",
+    "name": "Nome",
+    "japaneseName": "Nome em Japonês",
+    "address": "Endereço",
+    "phone": "Telefone",
+    "position": "Cargo",
+    "dailyRate": "Valor da Diária",
+    "halfDayRate": "Valor de Meio Período",
+    "hireDate": "Data de Admissão",
+    "document": "Documento",
+    "active": "Ativo",
+    "driver": "Motorista",
+    "assistant": "Auxiliar",
+    "success": {
+      "created": "Funcionário criado com sucesso",
+      "updated": "Funcionário atualizado com sucesso",
+      "deleted": "Funcionário excluído com sucesso"
+    },
+    "error": {
+      "notFound": "Funcionário não encontrado",
+      "saveFailed": "Erro ao salvar funcionário",
+      "deleteFailed": "Erro ao excluir funcionário"
+    }
+  },
+  "companies": {
+    "title": "Empresas",
+    "newCompany": "Nova Empresa",
+    "editCompany": "Editar Empresa",
+    "details": "Detalhes da Empresa",
+    "name": "Nome",
+    "japaneseName": "Nome em Japonês",
+    "address": "Endereço",
+    "contactName": "Nome do Contato",
+    "contactPhone": "Telefone do Contato",
+    "contactEmail": "Email do Contato",
+    "defaultServiceRate": "Valor Padrão do Serviço",
+    "active": "Ativa",
+    "success": {
+      "created": "Empresa criada com sucesso",
+      "updated": "Empresa atualizada com sucesso",
+      "deleted": "Empresa excluída com sucesso"
+    },
+    "error": {
+      "notFound": "Empresa não encontrada",
+      "saveFailed": "Erro ao salvar empresa",
+      "deleteFailed": "Erro ao excluir empresa"
+    }
+  },
+  "allocations": {
+    "title": "Alocações",
+    "newAllocation": "Nova Alocação",
+    "editAllocation": "Editar Alocação",
+    "details": "Detalhes da Alocação",
+    "allocation": "Alocação",
+    "date": "Data",
+    "employee": "Funcionário",
+    "company": "Empresa",
+    "period": "Período",
+    "periodType": "Tipo de Período",
+    "fullDay": "Integral",
+    "halfDay": "Meio Período",
+    "employeePayment": "Pagamento ao Funcionário",
+    "companyCharge": "Cobrança da Empresa",
+    "serviceLocation": "Local do Serviço",
+    "serviceDescription": "Descrição do Serviço",
+    "employeePaymentStatus": "Status do Pagamento ao Funcionário",
+    "companyPaymentStatus": "Status do Pagamento pela Empresa",
+    "value": "Valor",
+    "recent": "Alocações Recentes",
+    "noRecords": "Nenhuma alocação encontrada",
+    "startDate": "Data Inicial",
+    "endDate": "Data Final",
+    "confirmDelete": "Confirmar Exclusão",
+    "deleteConfirmMessage": "Tem certeza que deseja excluir a alocação do funcionário {{funcionario}} para a empresa {{empresa}} em {{data}}?",
+    "success": {
+      "created": "Alocação criada com sucesso",
+      "updated": "Alocação atualizada com sucesso",
+      "deleted": "Alocação excluída com sucesso"
+    },
+    "error": {
+      "notFound": "Alocação não encontrada",
+      "loadFailed": "Erro ao carregar alocações",
+      "saveFailed": "Erro ao salvar alocação",
+      "deleteFailed": "Erro ao excluir alocação"
+    },
+    "status": "Status",
+    "paid": "Pago",
+    "pending": "Pendente"
+  },
+  "calendar": {
+    "title": "Calendário",
+    "addAllocation": "Adicionar Alocação",
+    "generateReport": "Gerar Relatório",
+    "editAllocation": "Editar Alocação",
+    "newAllocation": "Nova Alocação",
+    "confirmDelete": "Confirmar Exclusão",
+    "deleteConfirmMessage": "Tem certeza que deseja excluir a alocação do funcionário {{funcionario}} em {{data}}?",
+    "success": {
+      "allocationCreated": "Alocação criada com sucesso",
+      "allocationUpdated": "Alocação atualizada com sucesso",
+      "allocationDeleted": "Alocação excluída com sucesso"
+    },
+    "error": {
+      "fetchFailed": "Erro ao buscar dados do calendário",
+      "fetchCompaniesFailed": "Erro ao buscar empresas",
+      "fetchEmployeesFailed": "Erro ao buscar funcionários",
+      "saveFailed": "Erro ao salvar alocação",
+      "deleteFailed": "Erro ao excluir alocação"
+    }
+  },
+  "payments": {
+    "title": "Pagamentos",
+    "employeePayments": "Pagamentos aos Funcionários",
+    "companyInvoices": "Faturas das Empresas",
+    "period": "Período",
+    "newEmployeePayment": "Novo Pagamento",
+    "newCompanyInvoice": "Nova Fatura",
+    "paymentDate": "Data do Pagamento",
+    "dueDate": "Data de Vencimento",
+    "invoiceDate": "Data da Fatura",
+    "paymentMethod": "Método de Pagamento",
+    "reference": "Referência",
+    "paid": "Pago",
+    "pending": "Pendente",
+    "partial": "Parcial",
+    "noEmployeePayments": "Nenhum pagamento encontrado",
+    "noCompanyInvoices": "Nenhuma fatura encontrada",
+    "recent": "Pagamentos Recentes",
+    "noRecords": "Nenhum registro encontrado",
+    "error": {
+      "loadEmployeePaymentsFailed": "Erro ao carregar pagamentos de funcionários",
+      "loadCompanyInvoicesFailed": "Erro ao carregar faturas de empresas"
+    }
+  },
+  "reports": {
+    "title": "Relatórios",
+    "financialReport": "Relatório Financeiro",
+    "employeeReport": "Relatório de Funcionários",
+    "companyReport": "Relatório de Empresas",
+    "allocationReport": "Relatório de Alocações",
+    "periodType": "Tipo de Período",
+    "monthly": "Mensal",
+    "quarterly": "Trimestral",
+    "yearly": "Anual",
+    "custom": "Personalizado",
+    "startDate": "Data Inicial",
+    "endDate": "Data Final",
+    "financialReportDescription": "Resumo financeiro com receitas, despesas e lucro no período",
+    "employeeReportDescription": "Relatório de funcionários com alocações e pagamentos",
+    "companyReportDescription": "Relatório de empresas com alocações e faturamento",
+    "allocationReportDescription": "Relatório detalhado de alocações no período",
+    "success": {
+      "generated": "Relatório gerado com sucesso"
+    },
+    "error": {
+      "generateFailed": "Erro ao gerar relatório"
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "profile": "Perfil",
+    "security": "Segurança",
+    "language": "Idioma",
+    "portuguese": "Português",
+    "japanese": "Japonês",
+    "light": "Modo Claro",
+    "dark": "Modo Escuro",
+    "notifications": "Notificações",
+    "saveChanges": "Salvar Alterações",
+    "changePassword": "Alterar Senha",
+    "cannotChangeEmail": "O e-mail não pode ser alterado",
+    "success": {
+      "settingsUpdated": "Configurações atualizadas com sucesso",
+      "passwordChanged": "Senha alterada com sucesso"
+    },
+    "error": {
+      "updateFailed": "Erro ao atualizar configurações"
+    }
+  },
+  "users": {
+    "title": "Usuários",
+    "newUser": "Novo Usuário",
+    "editUser": "Editar Usuário",
+    "name": "Nome",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "role": "Função",
+    "language": "Idioma",
+    "active": "Ativo",
+    "administrator": "Administrador",
+    "manager": "Gerente",
+    "operator": "Operador",
+    "administratorDescription": "Acesso total ao sistema",
+    "managerDescription": "Pode gerenciar funcionários, empresas e pagamentos",
+    "operatorDescription": "Pode visualizar dados e registrar alocações",
+    "emailCannotBeChanged": "O e-mail não pode ser alterado",
+    "cannotChangeSelfRole": "Você não pode alterar sua própria função",
+    "cannotDeactivateSelf": "Você não pode desativar seu próprio usuário",
+    "confirmDelete": "Tem certeza que deseja excluir o usuário {{name}}?",
+    "success": {
+      "created": "Usuário criado com sucesso",
+      "updated": "Usuário atualizado com sucesso",
+      "deleted": "Usuário excluído com sucesso"
+    },
+    "error": {
+      "notFound": "Usuário não encontrado",
+      "emailAlreadyExists": "Este e-mail já está em uso",
+      "cannotDeleteYourself": "Você não pode excluir seu próprio usuário",
+      "deleteFailed": "Erro ao excluir usuário"
+    }
+  },
+  "validation": {
+    "required": "Campo obrigatório",
+    "invalidEmail": "E-mail inválido",
+    "passwordTooShort": "A senha deve ter pelo menos 6 caracteres",
+    "passwordMismatch": "As senhas não conferem",
+    "mustBePositive": "O valor deve ser maior que zero"
+  },
+  "footer": {
+    "allRightsReserved": "Todos os direitos reservados",
+    "termsOfService": "Termos de Serviço",
+    "privacyPolicy": "Política de Privacidade"
+  }
+}
