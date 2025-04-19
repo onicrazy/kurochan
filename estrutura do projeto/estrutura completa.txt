@@ -90,12 +90,12 @@ kurochan-project/
 │   │   │   │   ├──* LoadingButton.jsx
 │   │   │   │   ├──* PageHeader.jsx
 │   │   │   │   └──* StatusChip.jsx
-│   │   │   ├── forms/
+│   │   │   ├──* forms/
 │   │   │   │   ├── AlocacaoForm.jsx
 │   │   │   │   ├──* EmpresaForm.jsx
 │   │   │   │   ├──* FuncionarioForm.jsx
-│   │   │   │   ├── PagamentoForm.jsx
-│   │   │   │   └── UserForm.jsx
+│   │   │   │   ├──* PagamentoForm.jsx
+│   │   │   │   └──* UserForm.jsx
 │   │   │   └──* layout/
 │   │   │       ├──* Footer.jsx
 │   │   │       ├──* Header.jsx
@@ -132,11 +132,11 @@ kurochan-project/
 │   │   │   │   │   ├──* CalendarioAlocacoes.jsx
 │   │   │   │   │   └──* DayCell.jsx
 │   │   │   │   └──* index.jsx
-│   │   │   ├── dashboard/
-│   │   │   │   ├── components/
-│   │   │   │   │   ├── FinancialSummary.jsx
-│   │   │   │   │   ├── RecentAllocations.jsx
-│   │   │   │   │   └── RevenueChart.jsx
+│   │   │   ├──* dashboard/
+│   │   │   │   ├──* components/
+│   │   │   │   │   ├──* FinancialSummary.jsx
+│   │   │   │   │   ├──* RecentAllocations.jsx
+│   │   │   │   │   └──* RevenueChart.jsx
 │   │   │   │   │   └──* StatusCard.jsx
 │   │   │   │   └──* index.jsx
 │   │   │   ├──* empresas/
