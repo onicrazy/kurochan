@@ -24,14 +24,13 @@ import formatters from '../../../utils/formatters';
  * Componente para célula do calendário
  * @param {Object} props - Propriedades do componente
  * @param {moment.Moment} props.day - Objeto de data do dia
+ * @param {boolean} props.isCurrentMonth - Se o dia é do mês atual
  * @param {Array} props.alocacoes - Lista de alocações para o dia
  * @param {Function} props.onAdd - Função para adicionar alocação
- * @param {Function} props.onEdit - Função para editar alocação
- * @param {Function} props.onDelete - Função para excluir alocação
  * @param {Function} props.onView - Função para visualizar alocação
  * @returns {JSX.Element} Componente DayCell
  */
-const DayCell = ({ day, alocacoes = [], onAdd, onEdit, onDelete, onView }) => {
+const DayCell = ({ day, isCurrentMonth = true, alocacoes = [], onAdd, onView }) => {
   const theme = useTheme();
   const { t } = useTranslation();
   const { currentUser } = useAuth();
@@ -39,9 +38,6 @@ const DayCell = ({ day, alocacoes = [], onAdd, onEdit, onDelete, onView }) => {
   
   // Verificar se é hoje
   const isToday = day.isSame(moment(), 'day');
-  
-  // Verificar se é dia do mês atual
-  const isCurrentMonth = day.isSame(moment(), 'month');
   
   // Verificar se é fim de semana
   const isWeekend = day.day() === 0 || day.day() === 6;
@@ -54,27 +50,11 @@ const DayCell = ({ day, alocacoes = [], onAdd, onEdit, onDelete, onView }) => {
     }
   };
   
-  // Manipulador para editar alocação
-  const handleEdit = (alocacao, e) => {
-    e.stopPropagation();
-    if (onEdit && currentUser?.permissions?.canEditAllocation) {
-      onEdit(alocacao);
-    }
-  };
-  
-  // Manipulador para excluir alocação
-  const handleDelete = (alocacao, e) => {
-    e.stopPropagation();
-    if (onDelete && currentUser?.permissions?.canDeleteAllocation) {
-      onDelete(alocacao);
-    }
-  };
-  
   // Manipulador para visualizar alocação
   const handleView = (alocacao, e) => {
     e.stopPropagation();
     if (onView) {
-      onView(alocacao);
+      onView(alocacao.id);
     }
   };
   
@@ -144,27 +124,13 @@ const DayCell = ({ day, alocacoes = [], onAdd, onEdit, onDelete, onView }) => {
               {alocacao.funcionario_nome}
             </Typography>
             
-            {!isMobile && (
-              <Box>
-                <IconButton 
-                  size="small" 
-                  sx={{ color: 'white', p: 0.2 }}
-                  onClick={(e) => handleEdit(alocacao, e)}
-                  disabled={!currentUser?.permissions?.canEditAllocation}
-                >
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
-                
-                <IconButton 
-                  size="small" 
-                  sx={{ color: 'white', p: 0.2 }}
-                  onClick={(e) => handleDelete(alocacao, e)}
-                  disabled={!currentUser?.permissions?.canDeleteAllocation}
-                >
-                  <DeleteIcon fontSize="inherit" />
-                </IconButton>
-              </Box>
-            )}
+            <IconButton 
+              size="small" 
+              sx={{ color: 'white', p: 0.2 }}
+              onClick={(e) => handleView(alocacao, e)}
+            >
+              <VisibilityIcon fontSize="inherit" />
+            </IconButton>
           </Box>
         ))}
       </Box>

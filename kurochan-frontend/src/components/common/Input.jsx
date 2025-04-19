@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TextField,
   InputAdornment,
@@ -43,7 +43,7 @@ const Input = ({
   ...rest
 }) => {
   // Estado para controlar a visibilidade da senha
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   
   // Manipulador para alternar a visibilidade da senha
   const handleTogglePasswordVisibility = () => {
