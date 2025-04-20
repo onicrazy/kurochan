@@ -87,7 +87,23 @@ app.get('/api/status', (req, res) => {
   });
 });
 
-// Rota não encontrada
+// MODIFICADO: Redirecionar para o frontend em desenvolvimento
+// Este código deve estar antes do middleware de rota não encontrada
+if (process.env.NODE_ENV === 'development') {
+  console.log('Redirecionando requisições não-API para o frontend');
+  
+  // Para qualquer rota que não comece com /api, redirecionar para o frontend
+  app.use((req, res, next) => {
+    if (!req.path.startsWith('/api/')) {
+      // Redirecionar para o URL do frontend
+      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3001';
+      return res.redirect(`${frontendUrl}${req.path}`);
+    }
+    next();
+  });
+}
+
+// Rota não encontrada (só será acionada para rotas de API não encontradas agora)
 app.use((req, res, next) => {
   res.status(404).json({
     error: 'NotFound',
@@ -103,6 +119,16 @@ app.use(errorMiddleware);
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT} em ambiente ${process.env.NODE_ENV || 'development'}`);
 });
+
+// Teste de conexão com banco de dados
+const db = require('./config/database');
+db.raw('SELECT 1+1 AS result')
+  .then(() => {
+    console.log('Conexão com o banco de dados estabelecida com sucesso!');
+  })
+  .catch(err => {
+    console.error('Erro ao conectar com o banco de dados:', err);
+  });
 
 // Para testes
 module.exports = app;

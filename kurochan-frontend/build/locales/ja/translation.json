@@ -1,0 +1,324 @@
+{
+  "common": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "edit": "編集",
+    "delete": "削除",
+    "view": "表示",
+    "add": "追加",
+    "back": "戻る",
+    "search": "検索",
+    "filter": "フィルター",
+    "clear": "クリア",
+    "active": "有効",
+    "inactive": "無効",
+    "all": "すべて",
+    "actions": "アクション",
+    "status": "状態",
+    "details": "詳細",
+    "observations": "備考",
+    "createdAt": "作成日",
+    "updatedAt": "更新日",
+    "of": "/",
+    "yes": "はい",
+    "no": "いいえ",
+    "viewAll": "すべて表示",
+    "noResults": "データがありません",
+    "rowsPerPage": "ページあたりの行数",
+    "errorLoadingData": "データの読み込みにエラーが発生しました",
+    "errorSavingData": "データの保存にエラーが発生しました",
+    "errorLoadingRelatedData": "関連データの読み込みにエラーが発生しました",
+    "legend": "凡例",
+    "today": "今日",
+    "increase": "増加",
+    "decrease": "減少",
+    "noChange": "変更なし",
+    "operator": "オペレーター",
+    "supervisor": "スーパーバイザー",
+    "confirm": "確認",
+    "select": "選択"
+  },
+  "auth": {
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "rememberMe": "ログイン状態を保持",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "loginToSystem": "システムにログイン",
+    "currentPassword": "現在のパスワード",
+    "newPassword": "新しいパスワード",
+    "confirmPassword": "パスワード（確認）",
+    "error": {
+      "invalidCredentials": "無効なメールアドレスまたはパスワードです",
+      "incorrectPassword": "現在のパスワードが正しくありません"
+    },
+    "resetPasswordEmailSent": "パスワードリセットメールを送信しました",
+    "sendResetLink": "リセットリンクを送信",
+    "backToLogin": "ログインに戻る"
+  },
+  "menu": {
+    "dashboard": "ダッシュボード",
+    "calendar": "カレンダー",
+    "employees": "従業員",
+    "companies": "会社",
+    "allocations": "配置",
+    "payments": "支払い",
+    "reports": "レポート",
+    "settings": "設定"
+  },
+  "dashboard": {
+    "welcome": "ようこそ、{{name}}さん",
+    "monthlyRevenue": "月間収入",
+    "monthlyExpenses": "月間支出",
+    "monthlyProfit": "月間利益",
+    "todayAllocations": "今日の配置",
+    "employeesWorking": "勤務中の従業員",
+    "pendingPayments": "保留中の支払い",
+    "noOutstandingPayments": "保留中の支払いはありません",
+    "noAllocationsToday": "今日の配置はありません",
+    "monthlyFinancialChart": "月間財務グラフ",
+    "allocationsPerCompany": "会社別配置",
+    "noDataAvailable": "データがありません",
+    "viewCalendar": "カレンダーを表示",
+    "managePayments": "支払いを管理",
+    "revenue": "収入",
+    "expenses": "支出",
+    "profit": "利益",
+    "error": {
+      "financialSummary": "財務サマリーの読み込みにエラーが発生しました",
+      "todayAllocations": "今日の配置の読み込みにエラーが発生しました",
+      "pendingPayments": "保留中の支払いの読み込みにエラーが発生しました",
+      "pendingReceivables": "保留中の請求の読み込みにエラーが発生しました",
+      "monthlyStatistics": "月間統計の読み込みにエラーが発生しました"
+    }
+  },
+  "employees": {
+    "title": "従業員",
+    "newEmployee": "新規従業員",
+    "editEmployee": "従業員を編集",
+    "details": "従業員詳細",
+    "name": "名前",
+    "japaneseName": "日本語名",
+    "address": "住所",
+    "phone": "電話番号",
+    "position": "役職",
+    "dailyRate": "日給",
+    "halfDayRate": "半日給",
+    "hireDate": "採用日",
+    "document": "書類",
+    "active": "有効",
+    "driver": "運転手",
+    "assistant": "助手",
+    "success": {
+      "created": "従業員が正常に作成されました",
+      "updated": "従業員が正常に更新されました",
+      "deleted": "従業員が正常に削除されました"
+    },
+    "error": {
+      "notFound": "従業員が見つかりません",
+      "saveFailed": "従業員の保存にエラーが発生しました",
+      "deleteFailed": "従業員の削除にエラーが発生しました"
+    }
+  },
+  "companies": {
+    "title": "会社",
+    "newCompany": "新規会社",
+    "editCompany": "会社を編集",
+    "details": "会社詳細",
+    "name": "名前",
+    "japaneseName": "日本語名",
+    "address": "住所",
+    "contactName": "担当者名",
+    "contactPhone": "担当者電話番号",
+    "contactEmail": "担当者メールアドレス",
+    "defaultServiceRate": "標準サービス料金",
+    "active": "有効",
+    "success": {
+      "created": "会社が正常に作成されました",
+      "updated": "会社が正常に更新されました",
+      "deleted": "会社が正常に削除されました"
+    },
+    "error": {
+      "notFound": "会社が見つかりません",
+      "saveFailed": "会社の保存にエラーが発生しました",
+      "deleteFailed": "会社の削除にエラーが発生しました"
+    }
+  },
+  "allocations": {
+    "title": "配置",
+    "newAllocation": "新規配置",
+    "editAllocation": "配置を編集",
+    "details": "配置詳細",
+    "allocation": "配置",
+    "date": "日付",
+    "employee": "従業員",
+    "company": "会社",
+    "period": "期間",
+    "periodType": "期間タイプ",
+    "fullDay": "全日",
+    "halfDay": "半日",
+    "employeePayment": "従業員への支払い",
+    "companyCharge": "会社への請求",
+    "serviceLocation": "サービス場所",
+    "serviceDescription": "サービス説明",
+    "employeePaymentStatus": "従業員への支払い状況",
+    "companyPaymentStatus": "会社への請求状況",
+    "value": "金額",
+    "recent": "最近の配置",
+    "noRecords": "配置記録がありません",
+    "startDate": "開始日",
+    "endDate": "終了日",
+    "confirmDelete": "配置を削除してもよろしいですか？",
+    "deleteConfirmMessage": "{{data}}の{{funcionario}}さんの{{empresa}}への配置を削除してもよろしいですか？",
+    "success": {
+      "created": "配置が正常に作成されました",
+      "updated": "配置が正常に更新されました",
+      "deleted": "配置が正常に削除されました"
+    },
+    "error": {
+      "notFound": "配置が見つかりません",
+      "loadFailed": "配置の読み込みにエラーが発生しました",
+      "saveFailed": "配置の保存にエラーが発生しました",
+      "deleteFailed": "配置の削除にエラーが発生しました"
+    },
+    "status": "状態",
+    "paid": "支払済み",
+    "pending": "未払い"
+  },
+  "calendar": {
+    "title": "カレンダー",
+    "addAllocation": "配置を追加",
+    "generateReport": "レポート生成",
+    "editAllocation": "配置を編集",
+    "newAllocation": "新規配置",
+    "confirmDelete": "配置を削除してもよろしいですか？",
+    "deleteConfirmMessage": "{{data}}の{{funcionario}}さんの配置を削除してもよろしいですか？",
+    "success": {
+      "allocationCreated": "配置が正常に作成されました",
+      "allocationUpdated": "配置が正常に更新されました",
+      "allocationDeleted": "配置が正常に削除されました"
+    },
+    "error": {
+      "fetchFailed": "カレンダーデータの読み込みにエラーが発生しました",
+      "fetchCompaniesFailed": "会社データの読み込みにエラーが発生しました",
+      "fetchEmployeesFailed": "従業員データの読み込みにエラーが発生しました",
+      "saveFailed": "配置の保存にエラーが発生しました",
+      "deleteFailed": "配置の削除にエラーが発生しました"
+    }
+  },
+  "payments": {
+    "title": "支払い",
+    "employeePayments": "従業員への支払い",
+    "companyInvoices": "会社への請求",
+    "period": "期間",
+    "newEmployeePayment": "新規支払い",
+    "newCompanyInvoice": "新規請求",
+    "paymentDate": "支払日",
+    "dueDate": "支払期限",
+    "invoiceDate": "請求日",
+    "paymentMethod": "支払方法",
+    "reference": "参照番号",
+    "paid": "支払済み",
+    "pending": "未払い",
+    "partial": "一部支払い",
+    "noEmployeePayments": "支払いが見つかりません",
+    "noCompanyInvoices": "請求書が見つかりません",
+    "recent": "最近の支払い",
+    "noRecords": "記録が見つかりません",
+    "error": {
+      "loadEmployeePaymentsFailed": "従業員への支払いの読み込みにエラーが発生しました",
+      "loadCompanyInvoicesFailed": "会社への請求の読み込みにエラーが発生しました"
+    }
+  },
+  "reports": {
+    "title": "レポート",
+    "financialReport": "財務レポート",
+    "employeeReport": "従業員レポート",
+    "companyReport": "会社レポート",
+    "allocationReport": "配置レポート",
+    "periodType": "期間タイプ",
+    "monthly": "月次",
+    "quarterly": "四半期",
+    "yearly": "年次",
+    "custom": "カスタム",
+    "startDate": "開始日",
+    "endDate": "終了日",
+    "financialReportDescription": "期間中の収入、支出、利益の財務概要",
+    "employeeReportDescription": "配置と支払いを含む従業員レポート",
+    "companyReportDescription": "配置と請求を含む会社レポート",
+    "allocationReportDescription": "期間中の詳細な配置レポート",
+    "success": {
+      "generated": "レポートが正常に生成されました"
+    },
+    "error": {
+      "generateFailed": "レポートの生成にエラーが発生しました"
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "profile": "プロフィール",
+    "security": "セキュリティ",
+    "language": "言語",
+    "portuguese": "ポルトガル語",
+    "japanese": "日本語",
+    "light": "ライトモード",
+    "dark": "ダークモード",
+    "notifications": "通知",
+    "saveChanges": "変更を保存",
+    "changePassword": "パスワード変更",
+    "cannotChangeEmail": "メールアドレスは変更できません",
+    "success": {
+      "settingsUpdated": "設定が正常に更新されました",
+      "passwordChanged": "パスワードが正常に変更されました"
+    },
+    "error": {
+      "updateFailed": "設定の更新にエラーが発生しました"
+    }
+  },
+  "users": {
+    "title": "ユーザー",
+    "newUser": "新規ユーザー",
+    "editUser": "ユーザーを編集",
+    "name": "名前",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "confirmPassword": "パスワード（確認）",
+    "role": "役割",
+    "language": "言語",
+    "active": "有効",
+    "administrator": "管理者",
+    "manager": "マネージャー",
+    "operator": "オペレーター",
+    "administratorDescription": "システムへの完全アクセス",
+    "managerDescription": "従業員、会社、支払いの管理が可能",
+    "operatorDescription": "データの閲覧と配置の登録が可能",
+    "emailCannotBeChanged": "メールアドレスは変更できません",
+    "cannotChangeSelfRole": "自分の役割は変更できません",
+    "cannotDeactivateSelf": "自分のアカウントを無効にすることはできません",
+    "confirmDelete": "ユーザー {{name}} を削除してもよろしいですか？",
+    "success": {
+      "created": "ユーザーが正常に作成されました",
+      "updated": "ユーザーが正常に更新されました",
+      "deleted": "ユーザーが正常に削除されました"
+    },
+    "error": {
+      "notFound": "ユーザーが見つかりません",
+      "emailAlreadyExists": "このメールアドレスは既に使用されています",
+      "cannotDeleteYourself": "自分のアカウントを削除することはできません",
+      "deleteFailed": "ユーザーの削除にエラーが発生しました"
+    }
+  },
+  "validation": {
+    "required": "必須フィールドです",
+    "invalidEmail": "無効なメールアドレスです",
+    "passwordTooShort": "パスワードは6文字以上である必要があります",
+    "passwordMismatch": "パスワードが一致しません",
+    "mustBePositive": "値は0より大きい必要があります"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved",
+    "termsOfService": "利用規約",
+    "privacyPolicy": "プライバシーポリシー"
+  }
+}
